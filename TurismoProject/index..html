@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>ADVENTURE TOUR IN RIO</title>
+  <link rel="stylesheet" href="./styles/front.css">
+</head>
+<div id="modal-carrinho" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="fecharCarrinho()">&times;</span>
+    <h2>Seu Carrinho</h2>
+    <ul id="lista-carrinho"></ul>
+    <p id="total-carrinho"></p>
+    <button onclick="fecharCarrinho()">Fechar</button>
+  </div>
+</div>
+
+<body>
+  <header>
+    <img src="./imagens/logotipoadveture.png" alt="Logo Adventure Tour in Rio" width="200" height="200">
+    <h1>ADVENTURE TOUR IN RIO</h1>
+    <p>Conheça os melhores roteiros de passeios na cidade de uma forma divertida e emocionante!</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#principal">Principal</a></li>
+      <li><a href="#passeios">Passeios</a></li>
+      <li><a href="#sobre">Quem Somos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- Seção Principal -->
+  <section id="principal">
+    <h2>Bem-vindo à Adventure Tour in Rio!</h2>
+    <p>Descubra as melhores aventuras que o Rio de Janeiro tem a oferecer. Desde trilhas desafiadoras até cachoeiras escondidas, temos o passeio perfeito para você!</p>
+    <div id="carrinho-info">Itens: 0 | Total: R$ 0,00</div>
+    <button onclick="abrirCarrinho()">Ver Carrinho</button>
+
+  </section>
+
+  <!-- Seção Ofertas -->
+  <section class="ofertas">
+    <h2>Ofertas e Roteiros em Destaque</h2>
+    <div class="slider">
+      <div class="slide active">
+        <img src="./imagens/pedra-da-gavea-lateral.jpg" alt="Trilha Pedra Bonita">
+        <p>Rapel Pedra da Gávea — de R$ 180 por R$ 140!</p>
+      </div>
+      <div class="slide">
+        <img src="./imagens/PedraGavea.jpg" alt="Rapel no Rio">
+        <p>Trilha com desconto especial neste fim de semana!</p>
+      </div>
+      <div class="slide">
+        <img src="./imagens/cachoeiras-de-guapimirim-5.jpg" alt="Cachoeira Secreta">
+        <p>Descubra a Cachoeira Secreta — pacote promocional!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Passeios -->
+  <section id="passeios">
+    <h2>Passeios</h2>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="trilhas">Trilhas</button>
+      <button class="tab" data-tab="cachoeiras">Cachoeiras</button>
+      <button class="tab" data-tab="rapel">Rapel</button>
+      <button class="tab" data-tab="radicais">Radicais</button>
+    </div>
+
+    <!-- Trilhas -->
+  <div class="tab-content active" id="trilhas"> 
+  <div class="carrossel-container">
+    <h3>Trilhas</h3>
+    <p>Explore trilhas incríveis como a Pedra do Telégrafo, Pedra do Pontal e Pedra da Gávea — aventura, natureza e vistas de tirar o fôlego!</p>
+
+
+  <button class="seta seta-esquerda" onclick="moverCarrossel(-1)">&#10094;</button>
+  <button class="seta seta-direita" onclick="moverCarrossel(1)">&#10095;</button>
+
+  <div class="trilhas" id="carrosselTrilhas">
+    <div class="item">
+      <img src="./imagens/PedraGavea.jpg" alt="Pedra da Gávea">
+      <p>Pedra da Gávea</p>
+      <p class="preco">R$ 150,00</p>
+      <button onclick="adicionarAoCarrinho('Pedra da Gávea', 150)">Adicionar ao Carrinho</button>
+      <a href="trilha-pedradagavea.html" class="btn">Saiba mais</a>
+    </div>
+     <div class="item">
+        <img src="./imagens/trilha-dois-irmaos.jpg" alt="Morro Dois Irmãos">
+        <p>Morro Dois Irmãos</p>
+        <p class="preco">R$ 110,00</p>
+        <button onclick="adicionarAoCarrinho('Morro Dois Irmãos', 110)">Adicionar ao Carrinho</button>
+      </div>
+
+    <div class="item">
+        <img src="./imagens/trilha-tijuca.jpg" alt="Pico da Tijuca">
+        <p>Pico da Tijuca</p>
+        <p class="preco">R$ 140,00</p>
+        <button onclick="adicionarAoCarrinho('Pico da Tijuca', 140)">Adicionar ao Carrinho</button>
+      </div>
+
+    <div class="item">
+      <img src="./imagens/pedradopontal.jpg" alt="Pedra do Pontal">
+      <p>Pedra do Pontal</p>
+      <p class="preco">R$ 120,00</p>
+      <button onclick="adicionarAoCarrinho('Pedra do Pontal', 120)">Adicionar ao Carrinho</button>
+    </div>
+
+    <div class="item">
+      <img src="./imagens/telegrafo.jpg" alt="Pedra do Telégrafo">
+      <p>Pedra do Telégrafo</p>
+      <p class="preco">R$ 130,00</p>
+      <button onclick="adicionarAoCarrinho('Pedra do Telégrafo', 130)">Adicionar ao Carrinho</button>
+    </div>
+    </div> 
+      <!-- Pontinhos -->
+   <div class="dots" id="dots"></div>
+  <div class="dots" id="dots-trilhas"></div>
+  </div>
+</div>
+  
+<!-- ======== ABA CACHOEIRAS ======== -->
+<div class="tab-content" id="cachoeiras">
+  <div class="carrossel-container">
+    <h3>Cachoeiras</h3>
+    <p>Refresque-se nas cachoeiras mais lindas do Rio!</p>
+
+    <div class="trilhas" id="carrosselCachoeiras">
+      <div class="item">
+        <img src="./imagens/cachoeira-horto.jpg" alt="Cachoeira do Horto">
+        <p>Cachoeira do Horto</p>
+        <p class="preco">R$ 90,00</p>
+        <button onclick="adicionarAoCarrinho('Cachoeira do Horto', 90)">Adicionar ao Carrinho</button>
+      </div>
+
+      <div class="item">
+        <img src="./imagens/cachoeira-tijuca.jpg" alt="Cachoeira da Floresta da Tijuca">
+        <p>Cachoeira da Floresta da Tijuca</p>
+        <p class="preco">R$ 100,00</p>
+        <button onclick="adicionarAoCarrinho('Cachoeira da Tijuca', 100)">Adicionar ao Carrinho</button>
+      </div>
+
+      <div class="item">
+        <img src="./imagens/cachoeira-grajaú.jpg" alt="Cachoeira do Grajaú">
+        <p>Cachoeira do Grajaú</p>
+        <p class="preco">R$ 85,00</p>
+        <button onclick="adicionarAoCarrinho('Cachoeira do Grajaú', 85)">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+
+    <div class="dots" id="dots-cachoeiras"></div>
+  </div>
+</div>
+
+<!-- ======== ABA RAPEL ======== -->
+<div class="tab-content" id="rapel">
+  <div class="carrossel-container">
+    <h3>Rapel</h3>
+    <p>Desça paredões incríveis com segurança e adrenalina!</p>
+
+    <div class="trilhas" id="carrosselRapel">
+      <div class="item">
+        <img src="./imagens/rapel-pedra-bonita.jpg" alt="Rapel na Pedra Bonita">
+        <p>Rapel na Pedra Bonita</p>
+        <p class="preco">R$ 180,00</p>
+        <button onclick="adicionarAoCarrinho('Rapel na Pedra Bonita', 180)">Adicionar ao Carrinho</button>
+      </div>
+
+      <div class="item">
+        <img src="./imagens/rapel-tijuca.jpg" alt="Rapel na Floresta da Tijuca">
+        <p>Rapel na Floresta da Tijuca</p>
+        <p class="preco">R$ 160,00</p>
+        <button onclick="adicionarAoCarrinho('Rapel na Tijuca', 160)">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+
+    <div class="dots" id="dots-rapel"></div>
+  </div>
+</div>
+
+<!-- ======== ABA RADICAIS ======== -->
+<div class="tab-content" id="radicais">
+  <div class="carrossel-container">
+    <h3>Radicais</h3>
+    <p>Atividades para quem ama emoção e aventura!</p>
+
+    <div class="trilhas" id="carrosselRadicais">
+      <div class="item">
+        <img src="./imagens/asa-delta.jpg" alt="Voo de Asa Delta">
+        <p>Voo de Asa Delta</p>
+        <p class="preco">R$ 350,00</p>
+        <button onclick="adicionarAoCarrinho('Voo de Asa Delta', 350)">Adicionar ao Carrinho</button>
+      </div>
+
+      <div class="item">
+        <img src="./imagens/parapente.jpg" alt="Parapente São Conrado">
+        <p>Parapente em São Conrado</p>
+        <p class="preco">R$ 300,00</p>
+        <button onclick="adicionarAoCarrinho('Parapente São Conrado', 300)">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+
+    <div class="dots" id="dots-radicais"></div>
+  </div>
+</div>
+  </section>
+
+  <!-- Seção Sobre -->
+  <section id="sobre">
+    <h2>Quem Somos</h2>
+    <div class="sobre-container">
+      <img src="./imagens/sobrenos.png" alt="Aventura no Rio de Janeiro" class="sobre-img">
+      <div class="sobre-texto">
+        <p>
+          A <strong>Adventure Tour in Rio</strong> nasceu da paixão pela natureza e esportes radicais.
+          Proporcionamos experiências únicas e seguras para quem deseja explorar trilhas, cachoeiras e montanhas.
+        </p>
+        <p>Trabalhamos com guias especializados e roteiros ecológicos em locais pouco explorados.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Contato -->
+  <section id="contato">
+    <h2>Fale Conosco</h2>
+    <form action="#" method="post">
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Telefone:</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="start_date">Data de início:</label>
+      <input type="date" id="start_date" name="start_date" required>
+
+      <label for="end_date">Data de término:</label>
+      <input type="date" id="end_date" name="end_date" required>
+
+      <label for="message">Mensagem:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <input type="submit" value="Enviar">
+    </form>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 Adventure Tour in Rio | Todos os direitos reservados</p>
+    <nav>
+      <a href="#principal">Principal</a> |
+      <a href="#passeios">Passeios</a> |
+      <a href="#sobre">Sobre</a> |
+      <a href="#contato">Contato</a>
+    </nav>
+  </footer>
+
+  
+  <script src="../TurismoProject/Modais/scripts.js"></script>
+</body>
+<?php
+session_start();
+if (!isset($_SESSION["usuario"])) {
+  header("Location: login.php");
+  exit;
+}
+?>
+</html>
