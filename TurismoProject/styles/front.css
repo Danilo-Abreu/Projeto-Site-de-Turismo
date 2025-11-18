@@ -11,3 +11,77 @@ p {
     margin: 20px;
     text-align: center;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #6dea7585;
+    color: #333;
+    text-align: center;
+    border-radius: 10px;
+    border-style: groove;
+
+}
+
+    header {
+        background-color: #09a43a;
+        color: white;
+        padding: 20px;
+        border-style: groove;
+        border-radius: 10px;
+    }
+
+    header img {
+        width: 120px;
+        height: auto;
+    }
+
+    nav ul {
+        list-style-type: disc;
+        padding: 0;
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    nav a {
+        text-decoration: darkgreen;
+        color: #bddfb9;
+        font-weight: bold;
+    }
+.pedragavea-header {
+    background-color: #09a43a;
+    color: white;
+    padding: 20px;
+    border-style: groove;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    section {
+        margin: 40px auto;
+        max-width: 600px;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    form {
+        text-align: left;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 8px;   
+    }
