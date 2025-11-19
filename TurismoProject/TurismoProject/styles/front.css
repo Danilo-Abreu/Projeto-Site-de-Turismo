@@ -1,0 +1,622 @@
+/* front.css */
+body {
+    font-family: Arial, sans-serif;
+    font: optional;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    text-align: center;
+        }
+
+    header {
+        
+        background-image: url('../imagens/background.png');
+        background-size: cover;
+        background-position: center;
+        color: rgb(247, 171, 100);
+        padding: 20px;
+        
+    }
+
+    header img {
+        width: 80px;
+        height: auto;
+        margin-bottom: 10px;
+        display: block;
+        margin-left:0 ;
+        margin-right: auto;
+    }
+
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #158d07;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    section {
+        margin: 40px auto;
+        max-width: 600px;
+        background-color: #a2eb627a;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    form {
+        text-align: left;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 7px;
+        margin: 6px 0 16px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #be6404;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0079a1;
+    }
+.btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 8px;
+  border-radius: 9px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.tab {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.tab:hover {
+    background-color: #0079a1;
+}
+
+.tab.active {
+    background-color: #005f75;
+}
+
+.tab-content {
+    display: none;
+    text-align: center;
+    max-width: 700px;
+    padding-right: auto;
+    margin: auto;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+.sobre-container img {
+    width: 80px;
+    height: auto;
+}
+.Danilo-container img{
+  width: 500px;
+  height: auto;
+}
+.btn:hover {
+    background-color: #005f75;
+}
+/* ===== Carrossel ===== */
+.carrossel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  margin: 0auto;
+}
+
+.trilhas {
+  display: flex;
+  justify-content: flex-start ;
+  transition: transform 0.6s ease-in-out;
+  gap: 20px;
+}
+.cachoeiras {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  gap: 20px;
+}
+
+.item {
+  background-color: #ffffff;
+  border-radius: 15px;
+  width: 700px;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s ease;
+  margin: 0%;
+  border: 1px solid #ccc;
+
+}
+.item img{
+  width: 180px;
+  height: 120px;
+}
+.item img:hover {
+  transform: scale(1.05);
+  width: 210px;
+  height: 150px;
+}
+
+
+.item .preco {
+  color: #2e8b57;
+  font-weight: bold;
+}
+
+
+.item button:hover {
+  background-color: #cc5200;
+  padding: 10px;
+}
+
+/* ===== Setas ===== */
+.seta {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #31c02e;
+  color: rgb(255, 255, 255);
+  border: none;
+  font-size: 24px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.seta:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.seta-esquerda { left: 10px; }
+.seta-direita { right: 10px; }
+
+/* ===== Pontinhos ===== */
+.dots {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #007bff;
+}
+/* ===== Modal ===== */
+.passeios {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.carrosseltrilhas .carrosselcachoeiras {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.carrosseltrilhas .carrosselcachoeiras img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  color: #333;
+  cursor: pointer;
+}   
+.close:hover {
+  color: #000;  
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+.trilhas-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+
+.item:hover {
+  transform: scale(1.05);
+}
+
+
+.item button {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  font-display: auto;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  padding: 5px;
+}
+
+
+.ofertas {
+  text-align: center;
+  margin: 40px auto;
+}
+.slider {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 15px;
+}
+.slide {
+  display: none;
+  transition: opacity 1s ease-in-out;
+}
+.slide.active {
+  display: block;
+  animation: fadeIn 1s;
+}
+.slide img {
+  width: 100%;
+  height: 300px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+.slide p {
+  background-color: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 10px;
+  margin: 0;
+}
+/* Modal Carrinho */
+#icone-carrinho {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50px;
+  padding: 10px 15px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+
+#contador-carrinho {
+  background-color: #ff4d4d;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* === PAINEL LATERAL DO CARRINHO === */
+#painel-carrinho {
+  position: fixed;
+  top: 0;
+  right: -400px; /* escondido por padrão */
+  width: 350px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+  z-index: 1002;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.4s ease;
+}
+
+#painel-carrinho.ativo {
+  right: 0; /* aparece na tela */
+}
+
+.cabecalho-carrinho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cabecalho-carrinho h2 {
+  color: #3ec807;
+}
+
+#fechar-carrinho {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+#carrinho-itens {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-top: 15px;
+}
+
+.item-carrinho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+
+.item-carrinho span {
+  font-size: 15px;
+}
+
+.remover-item {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#carrinho-total {
+  font-weight: bold;
+  text-align: right;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+#limpar-carrinho {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.btn-comprar {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background: #27ae60;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-comprar:hover {
+    background: #1e8d4d;
+}
+
+/* === FUNDO ESCURECIDO === */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease;
+}
+
+#overlay.ativo {
+  opacity: 1;
+  visibility: visible;
+}
+/*Botões fixos na tela (Voltar ao topo e WhatsApp)*/
+
+.fixed-button {
+    position: fixed; /* Fixa o botão na tela, mesmo ao rolar */
+    display: none;   /* Começa invisível */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    width: 50px;     /* Largura do botão */
+    height: 50px;    /* Altura do botão */
+    border-radius: 50%; /* Deixa o botão redondo */
+    background-color: var(--color-white); /* Cor de fundo (usa variável CSS) */
+    color: var(--color-black); /* Cor do ícone/texto (usa variável CSS) */
+    cursor: pointer; /* Muda o cursor para "mãozinha" ao passar por cima */
+    z-index: 1000;   /* Garante que o botão fique acima de outros elementos */
+    opacity: 0;      /* Começa invisível (transparente) */
+    transition: opacity 0.5s ease, box-shadow 0.5s ease; /* Suaviza a transição de opacidade e sombra */
+}
+
+/*Botão "Voltar ao Topo"*/
+
+#backToTop {
+    bottom: 20px; /* Distância do fundo da tela */
+    left: 20px;   /* Distância da esquerda da tela */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Sombra escura ao redor do botão */
+    background-color: white; /* Cor de fundo branca */
+}
+
+/*Botão do WhatsApp*/
+#whatsappButton {
+    bottom: 20px; /* Distância do fundo da tela */
+    right: 20px;  /* Distância da direita da tela */
+    background-color: #25D366; /* Verde padrão do WhatsApp */
+    box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5); /* Sombra verde ao redor */
+    animation: pulse 2s infinite; /* Aplica animação de "pulsar" continuamente a cada 2 segundos */
+}
+
+/*Ícone dentro do botão do WhatsApp*/
+#whatsappButton i {
+    font-size: 24px; /* Tamanho do ícone */
+    color: #fff;      /* Cor branca para o ícone */
+}
+
+/*Ícones dentro de qualquer botão fixo*/
+.fixed-button i {
+    font-size: 24px; /* Tamanho padrão dos ícones nos botões */
+}
+
+/*Animação de Pulsar*/
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Tamanho normal */
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Sombra inicial */
+    }
+    50% {
+        transform: scale(1.1); /* Aumenta um pouco o tamanho */
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.7); /* Sombra mais forte */
+    }
+    100% {
+        transform: scale(1); /* Volta ao tamanho normal */
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Volta à sombra inicial */
+    }
+}
+.contato-section {
+    padding: 40px;
+    background: #f5f5f5;
+}
+
+.contato-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.mapa-container {
+    flex: 1 1 400px;
+}
+.galeria-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.galeria-imagem {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #000;
+}
+
+.fechar-galeria {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.galeria-btn {
+    position: absolute;
+    top: 50%;
+    background: rgba(255,255,255,0.3);
+    border: none;
+    font-size: 45px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    transform: translateY(-50%);
+    color: #fff;
+}
+
+.galeria-btn:hover {
+    background: rgba(255,255,255,0.6);
+}
+
+.galeria-btn.esquerda { left: 30px; }
+.galeria-btn.direita { right: 30px; }
