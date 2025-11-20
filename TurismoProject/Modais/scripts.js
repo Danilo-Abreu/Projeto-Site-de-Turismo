@@ -74,24 +74,32 @@ function atualizarContador() {
   carrinho.forEach(item => totalItens += item.quantidade);
   contador.textContent = totalItens;
 }
-document.getElementById("botao-comprar").addEventListener("click", () => {
+const botaoComprar = document.getElementById("botao-comprar");
+if (botaoComprar) {
+  botaoComprar.addEventListener("click", () => {
     if (carrinho.length === 0) {
-        alert("Seu carrinho está vazio!");
-        return;
+      alert("Seu carrinho está vazio!");
+      return;
     }
-});
 
-    // Exemplo de ação inicial
     alert("Compra finalizada! Em breve você receberá os detalhes no WhatsApp.");
+
     carrinho = [];
     atualizarCarrinho();
+    atualizarContador();
+  });
+}
+
 
 // Esvaziar carrinho
-document.getElementById("limpar-carrinho").addEventListener("click", () => {
-  carrinho = [];
-  atualizarCarrinho();
-  atualizarContador();
-});
+const botaoLimpar = document.getElementById("limpar-carrinho");
+if (botaoLimpar) {
+  botaoLimpar.addEventListener("click", () => {
+    carrinho = [];
+    atualizarCarrinho();
+    atualizarContador();
+  });
+}
 // ======== TROCA DE ABAS (TABS) ======== //
 document.addEventListener("DOMContentLoaded", () => { 
   const tabs = document.querySelectorAll(".tab"); 
@@ -270,3 +278,41 @@ document.addEventListener('DOMContentLoaded', function () { // Espera o HTML car
         window.open('https://wa.me/5521990665379', '_blank') ;// Abre o chat do WhatsApp com esse número
     });
 }); // Fim do DOMContentLoaded: garante que tudo só roda depois do HTML estar pronto
+const backToTopButton = document.getElementById('backToTop');
+const whatsappButton = document.getElementById('whatsappButton');
+
+if (backToTopButton) {
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+if (whatsappButton) {
+  whatsappButton.addEventListener('click', () => {
+    window.open('https://wa.me/5521994681987', '_blank');
+  });
+}
+let galeriaImagens = [];
+let galeriaIndex = 0;
+
+function abrirGaleria(imagens) {
+    galeriaImagens = imagens;
+    galeriaIndex = 0;
+
+    document.getElementById("galeria-img").src = galeriaImagens[galeriaIndex];
+    document.getElementById("galeria-modal").style.display = "flex";
+}
+
+function fecharGaleria() {
+    document.getElementById("galeria-modal").style.display = "none";
+}
+
+function galeriaProxima() {
+    galeriaIndex = (galeriaIndex + 1) % galeriaImagens.length;
+    document.getElementById("galeria-img").src = galeriaImagens[galeriaIndex];
+}
+
+function galeriaAnterior() {
+    galeriaIndex = (galeriaIndex - 1 + galeriaImagens.length) % galeriaImagens.length;
+    document.getElementById("galeria-img").src = galeriaImagens[galeriaIndex];
+}

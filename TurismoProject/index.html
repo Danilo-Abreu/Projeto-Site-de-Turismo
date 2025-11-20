@@ -6,24 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ffffff">
   <title>ADVENTURE TOUR IN RIO</title>
-  <link rel="stylesheet" href="styles/gavea.css">
-  <link rel="shortcut icon" href="imagens/logoatual.png" type="image/x-icon">
+  <link rel="stylesheet" href="../TurismoProject/styles/front.css">
+<!--Importando os ícones do Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+        integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
 </head>
-<div id="modal-carrinho" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="fecharCarrinho()">&times;</span>
-    <h2>Seu Carrinho</h2>
-    <ul id="lista-carrinho"></ul>
-    <p id="total-carrinho"></p>
-    <button onclick="fecharCarrinho()">Fechar</button>
-  </div>
-</div>
+
 
 <body>
+<!--Botão voltar ao topo-->
+<div id="backToTop" class="fixed-button">
+    <i class="bi bi-chevron-up"></i>
+</div>
+
+    <!--Botão WhatsApp-->
+    <div id="whatsappButton" class="fixed-button">
+        <i class="bi bi-whatsapp"></i>
+    </div>
   <header>
-    <img src="./imagens/logotipoadveture.png" alt="Logo Adventure Tour in Rio" width="200" height="200">
-    <h1>ADVENTURE TOUR IN RIO</h1>
-    <p>Conheça os melhores roteiros de passeios na cidade de uma forma divertida e emocionante!</p>
+     <img src="imagens/logotipoadveture.png" alt="Logo Adventure Tour in Rio" width="200" height="200">
+     <h1>ADVENTURE TOUR IN RIO</h1>
+     <p>                                                                   
+
+
+
+     </p>
+    
   </header>
 
   <nav>
@@ -37,11 +45,28 @@
 
   <!-- Seção Principal -->
   <section id="principal">
-    <h2>Bem-vindo à Adventure Tour in Rio!</h2>
+    <h1>BEM-VINDO</h1> 
     <p>Descubra as melhores aventuras que o Rio de Janeiro tem a oferecer. Desde trilhas desafiadoras até cachoeiras escondidas, temos o passeio perfeito para você!</p>
-    <div id="carrinho-info">Itens: 0 | Total: R$ 0,00</div>
-    <button onclick="abrirCarrinho()">Ver Carrinho</button>
+    <h2> Adventure Tour in Rio!</h2>
+     <div id="icone-carrinho" onclick="toggleCarrinho()">
+  🛒 <span id="contador-carrinho">0</span>
+    </div>
 
+<!-- Painel lateral do Carrinho -->
+  <div id="painel-carrinho">
+  <div class="cabecalho-carrinho">
+    <h2>Meu Carrinho</h2>
+    <button id="fechar-carrinho" onclick="toggleCarrinho()">✖</button>
+  </div>
+
+  <div id="carrinho-itens"></div>
+  <p id="carrinho-total">Total: R$ 0,00</p>
+  <button id="limpar-carrinho">Esvaziar Carrinho</button>
+  <button id="botao-comprar" class="btn-comprar">Finalizar Compra</button>
+</div>
+
+<!-- Fundo escurecido ao abrir o carrinho -->
+<div id="overlay" onclick="toggleCarrinho()"></div>
   </section>
 
   <!-- Seção Ofertas -->
@@ -81,43 +106,50 @@
     <p>Explore trilhas incríveis como a Pedra do Telégrafo, Pedra do Pontal e Pedra da Gávea — aventura, natureza e vistas de tirar o fôlego!</p>
 
 
-  <button class="seta seta-esquerda" onclick="moverCarrossel(-1)">&#10094;</button>
-  <button class="seta seta-direita" onclick="moverCarrossel(1)">&#10095;</button>
+ <button class="seta seta-esquerda" data-trilhas-id="carrosselTrilhas" onclick="moverCarrosselPorId(this, -1)">&#10094;</button>
+ <button class="seta seta-direita" data-trilhas-id="carrosselTrilhas" onclick="moverCarrosselPorId(this, 1)">&#10095;</button>
 
   <div class="trilhas" id="carrosselTrilhas">
-    <div class="item">
-      <img src="./imagens/PedraGavea.jpg" alt="Pedra da Gávea">
+    <div class="item" ondblclick="abrirGaleria(['imagens/PedraGavea.jpg','imagens/Gavea2.jpg','imagens/Gavea3.jpg','imagens/Gavea4.jpg' ])">
+    
+      <img src="./imagens/PedraGavea.jpg">
       <p>Pedra da Gávea</p>
       <p class="preco">R$ 150,00</p>
       <button onclick="adicionarAoCarrinho('Pedra da Gávea', 150)">Adicionar ao Carrinho</button>
       <a href="trilha-pedradagavea.html" class="btn">Saiba mais</a>
     </div>
-     <div class="item">
-        <img src="./imagens/trilha-dois-irmaos.jpg" alt="Morro Dois Irmãos">
+    
+  <div class="item" ondblclick="abrirGaleria(['imagens/Morro_Dois_Irmãos_rio.jpg','imagens/dois1.jpg','imagens/dois2.jpg','imagens/dois3.jpg'])">
+       
+        <img src="../TurismoProject/imagens/Morro_Dois_Irmãos_rio.jpg"
         <p>Morro Dois Irmãos</p>
         <p class="preco">R$ 110,00</p>
         <button onclick="adicionarAoCarrinho('Morro Dois Irmãos', 110)">Adicionar ao Carrinho</button>
+        <a href="trilha-pedradagavea.html" class="btn">Saiba mais</a>
       </div>
 
-    <div class="item">
-        <img src="./imagens/trilha-tijuca.jpg" alt="Pico da Tijuca">
+   <div class="item" ondblclick="abrirGaleria(['imagens/picodatijuca.jpg','imagens/picodatijuca2.jpg','imagens/picodatijuca3.jpg'])">
+        <img src="../TurismoProject/imagens/picodatijuca.jpg" alt="Pico da Tijuca">
         <p>Pico da Tijuca</p>
         <p class="preco">R$ 140,00</p>
         <button onclick="adicionarAoCarrinho('Pico da Tijuca', 140)">Adicionar ao Carrinho</button>
+        <a href="trilha-picodatiijuca.html" class="btn">Saiba mais</a>
       </div>
 
-    <div class="item">
-      <img src="./imagens/pedradopontal.jpg" alt="Pedra do Pontal">
+  <div class="item" ondblclick="abrirGaleria(['imagens/pedradopontal.jpg','imagens/pp1.jpg','imagens/pp2.jpg','imagens/pp3.jpg'])">
+      <img src="../TurismoProject/imagens/pedradopontal.jpg">
       <p>Pedra do Pontal</p>
       <p class="preco">R$ 120,00</p>
       <button onclick="adicionarAoCarrinho('Pedra do Pontal', 120)">Adicionar ao Carrinho</button>
+      <a href="trilha-pedradopontal.html" class="btn">Saiba mais</a>
     </div>
 
-    <div class="item">
-      <img src="./imagens/telegrafo.jpg" alt="Pedra do Telégrafo">
+  <div class="item" ondblclick="abrirGaleria(['imagens/telegrafo.jpg','imagens/tele1.jpg','imagens/tele2.jpg','imagens/tele3.jpeg','imagens/tele4.jpg'])">
+      <img src="./imagens/tele4.JPG">
       <p>Pedra do Telégrafo</p>
       <p class="preco">R$ 130,00</p>
       <button onclick="adicionarAoCarrinho('Pedra do Telégrafo', 130)">Adicionar ao Carrinho</button>
+      <a href="trilha-pedradagavea.html" class="btn">Saiba mais</a>
     </div>
     </div> 
       <!-- Pontinhos -->
@@ -133,28 +165,45 @@
     <p>Refresque-se nas cachoeiras mais lindas do Rio!</p>
 
     <div class="trilhas" id="carrosselCachoeiras">
-      <div class="item">
-        <img src="./imagens/cachoeira-horto.jpg" alt="Cachoeira do Horto">
+        <div class="item" ondblclick="abrirGaleria(['imagens/cachoeiradohorto.jpg','imagens/horto1.jpg','imagens/horto2.jpg','imagens/horto3.jpeg'])">
+        <img src="imagens/cachoeiradohorto.jpg" alt="Cachoeira do Horto">
         <p>Cachoeira do Horto</p>
         <p class="preco">R$ 90,00</p>
         <button onclick="adicionarAoCarrinho('Cachoeira do Horto', 90)">Adicionar ao Carrinho</button>
       </div>
 
-      <div class="item">
-        <img src="./imagens/cachoeira-tijuca.jpg" alt="Cachoeira da Floresta da Tijuca">
-        <p>Cachoeira da Floresta da Tijuca</p>
+    <div class="item" ondblclick="abrirGaleria(['imagens/cachoeiras-de-guapimirim-5.jpg','imagens/vale1.jpg','imagens/vale2.jpg'])">
+       
+      <img src="imagens/cachoeiras-de-guapimirim-5.jpg" alt="Vale da lua">
+        <p>Vale da Lua Guapimirim</p>
         <p class="preco">R$ 100,00</p>
-        <button onclick="adicionarAoCarrinho('Cachoeira da Tijuca', 100)">Adicionar ao Carrinho</button>
+        <button onclick="adicionarAoCarrinho('Vale da lua', 100)">Adicionar ao Carrinho</button>
       </div>
 
-      <div class="item">
-        <img src="./imagens/cachoeira-grajaú.jpg" alt="Cachoeira do Grajaú">
-        <p>Cachoeira do Grajaú</p>
+    <div class="item" ondblclick="abrirGaleria(['imagens/vargem1.jpeg','imagens/vg2.jpeg','imagens/vg3.jpg'])">
+        <img src="../TurismoProject/imagens/Vargem-Grande.png" alt="Cachoeira de Vargem Grande">
+        <p>Cachoeira de Vargem Grande</p>
         <p class="preco">R$ 85,00</p>
-        <button onclick="adicionarAoCarrinho('Cachoeira do Grajaú', 85)">Adicionar ao Carrinho</button>
+        <button onclick="adicionarAoCarrinho('Cachoeira de Vargem Grande', 85)">Adicionar ao Carrinho</button>
       </div>
-    </div>
 
+    <div class="item" ondblclick="abrirGaleria(['imagens/esco1.jpg','imagens/esco2.jpg'])">
+        <img src="../TurismoProject/imagens/cachoeiradoescorrega.jpg" alt="Cachoeira do Escorrega">
+        <p>Cachoeira do Escorrega</p>
+        <p class="preco">R$ 120,00</p>
+        <button onclick="adicionarAoCarrinho('Cachoeira do Escorrega', 120)">Adicionar ao Carrinho</button>
+      </div>
+      
+    <div class="item" ondblclick="abrirGaleria(['imagens/esme1.jpg','imagens/esme2.jpg','imagens/esme3.jpg'])">
+        <img src="../TurismoProject/imagens/Serrinha.jpeg" alt="Poço da Esmeralda Serrinha do Alambari">
+        <p>Poço da Esmeralda Serrinha do Alambari</p>
+        <p class="preco">R$ 130,00</p>
+        <button onclick="adicionarAoCarrinho('Poço da Esmeralda Serrinha do Alambari', 130)">Adicionar ao Carrinho</button>
+      </div>
+
+    </div>
+ <button class="seta seta-esquerda" data-trilhas-id="carrosselCachoeiras" onclick="moverCarrosselPorId(this, -1)">&#10094;</button>
+ <button class="seta seta-direita" data-trilhas-id="carrosselCachoeiras" onclick="moverCarrosselPorId(this, 1)">&#10095;</button>
     <div class="dots" id="dots-cachoeiras"></div>
   </div>
 </div>
@@ -166,21 +215,37 @@
     <p>Desça paredões incríveis com segurança e adrenalina!</p>
 
     <div class="trilhas" id="carrosselRapel">
-      <div class="item">
-        <img src="./imagens/rapel-pedra-bonita.jpg" alt="Rapel na Pedra Bonita">
-        <p>Rapel na Pedra Bonita</p>
+      <div class="item" ondblclick="abrirGaleria(['imagens/tarta1.jpg','imagens/tarta2.jpg','imagens/tarta3.jpg'])">
+        <img src="../TurismoProject/imagens/pedra-da-tartaruga-topo-maior.jpg" alt="Rapel pedra da Tartaruga">
+        <p>Rapel da Pedra da Tartaruga</p>
         <p class="preco">R$ 180,00</p>
-        <button onclick="adicionarAoCarrinho('Rapel na Pedra Bonita', 180)">Adicionar ao Carrinho</button>
+        <button onclick="adicionarAoCarrinho('Rapel Pedra da Tartaruga', 180)">Adicionar ao Carrinho</button>
       </div>
 
-      <div class="item">
-        <img src="./imagens/rapel-tijuca.jpg" alt="Rapel na Floresta da Tijuca">
-        <p>Rapel na Floresta da Tijuca</p>
+      <div class="item" ondblclick="abrirGaleria(['imagens/pg1.jpg','imagens/gv2.jpg','imagens/pg3.jpg'])">
+        <img src="../TurismoProject/imagens/pedra-da-gavea-lateral.jpg" alt="Rapel na Pedra do Gávea">
+        <p>Rapel na Pedra do Imperador "Gávea"</p>
+        <p class="preco">R$ 250,00</p>
+        <button onclick="adicionarAoCarrinho('Rapel na Gávea', 250)">Adicionar ao Carrinho</button>
+      </div>
+
+      <div class="item" ondblclick="abrirGaleria(['imagens/Joatinga.jpg','imagens/Joatinga.2.jpg','imagens/Joatinga3.jpg'])">
+        <img src="../TurismoProject/imagens/Joatinga.2.jpg" alt="Rapel na Joatinga">
+        <p>Rapel na Joatinga</p>
         <p class="preco">R$ 160,00</p>
-        <button onclick="adicionarAoCarrinho('Rapel na Tijuca', 160)">Adicionar ao Carrinho</button>
+        <button onclick="adicionarAoCarrinho('Rapel na Joatinga', 160)">Adicionar ao Carrinho</button>
       </div>
-    </div>
+      
+      <div class="item" ondblclick="abrirGaleria(['imagens/pontal1.jpg','imagens/pontal2.jpg','imagens/pontal3.jpg'])">
+        <img src="../TurismoProject/imagens/Pontal1.jpg"alt="Rapel na Pedra do Pontal">
+        <p>Rapel na Pedra do Pontal</p>
+        <p class="preco">R$ 160,00</p>
+        <button onclick="adicionarAoCarrinho('Rapel na Pedra do Pontal', 160)">Adicionar ao Carrinho</button>
+      </div>
 
+    </div>
+<button class="seta seta-esquerda" data-trilhas-id="carrosselRapel" onclick="moverCarrosselPorId(this, -1)">&#10094;</button>
+<button class="seta seta-direita" data-trilhas-id="carrosselRapel" onclick="moverCarrosselPorId(this, 1)">&#10095;</button>
     <div class="dots" id="dots-rapel"></div>
   </div>
 </div>
@@ -192,23 +257,47 @@
     <p>Atividades para quem ama emoção e aventura!</p>
 
     <div class="trilhas" id="carrosselRadicais">
-      <div class="item">
-        <img src="./imagens/asa-delta.jpg" alt="Voo de Asa Delta">
+      <div class="item" ondblclick="abrirGaleria(['imagens/asa2.jpg','imagens/asa3.jpg'])">
+        <img src="../TurismoProject/imagens/asa.jpg" alt="Voo de Asa Delta">
         <p>Voo de Asa Delta</p>
-        <p class="preco">R$ 350,00</p>
+        <p class="preco">R$ 550,00</p>
         <button onclick="adicionarAoCarrinho('Voo de Asa Delta', 350)">Adicionar ao Carrinho</button>
       </div>
 
-      <div class="item">
-        <img src="./imagens/parapente.jpg" alt="Parapente São Conrado">
+      <div class="item" ondblclick="abrirGaleria(['imagens/pente1.jpg','imagens/pente2.jpg','imagens/pente3.jpg'])">
+        <img src="../TurismoProject/imagens/pente1.jpg" alt="Parapente São Conrado">
         <p>Parapente em São Conrado</p>
         <p class="preco">R$ 300,00</p>
         <button onclick="adicionarAoCarrinho('Parapente São Conrado', 300)">Adicionar ao Carrinho</button>
       </div>
-    </div>
 
+      <div class="item" ondblclick="abrirGaleria(['imagens/hele1.jpg','imagens/hele2.jpg','imagens/hele3.jpg'])">
+        <img src="../TurismoProject/imagens/hele3.jpg" alt="Voo de Helecóptero">
+        <p>Voo de Helecóptero</p>
+        <p class="preco">R$ 1.500,00</p>
+        <button onclick="adicionarAoCarrinho('Voo de Helecóptero', 1500)">Adicionar ao Carrinho</button>
+      </div>
+
+      <div class="item" ondblclick="abrirGaleria(['imagens/standup.jpg','imagens/standup1.jpg','imagens/standup4.jpg','imagens/standup5.jpg'])">
+        <img src="../TurismoProject/imagens/standup.jpg" alt="Standup Pedal">
+        <p>Stand Up Paddle</p>
+        <p class="preco">R$ 130,00</p>
+        <button onclick="adicionarAoCarrinho('Stand up Paddle', 130)">Adicionar ao Carrinho</button>
+      </div>
+
+    </div>
+<button class="seta seta-esquerda" data-trilhas-id="carrosselRadicais" onclick="moverCarrosselPorId(this, -1)">&#10094;</button>
+<button class="seta seta-direita" data-trilhas-id="carrosselRadicais" onclick="moverCarrosselPorId(this, 1)">&#10095;</button>
     <div class="dots" id="dots-radicais"></div>
   </div>
+</div>
+<div id="galeria-modal" class="galeria-modal">
+    <span class="fechar-galeria" onclick="fecharGaleria()">&times;</span>
+
+    <img id="galeria-img" class="galeria-imagem">
+
+    <button class="galeria-btn esquerda" onclick="galeriaAnterior()">&#10094;</button>
+    <button class="galeria-btn direita" onclick="galeriaProxima()">&#10095;</button>
 </div>
   </section>
 
@@ -216,12 +305,18 @@
   <section id="sobre">
     <h2>Quem Somos</h2>
     <div class="sobre-container">
-      <img src="./imagens/sobrenos.png" alt="Aventura no Rio de Janeiro" class="sobre-img">
+      <img src="../TurismoProject/imagens/logoatual.png" alt="Aventura no Rio de Janeiro" class="sobre-img">
       <div class="sobre-texto">
-        <p>
-          A <strong>Adventure Tour in Rio</strong> nasceu da paixão pela natureza e esportes radicais.
+        <div class="Danilo-container">
+          <img src="../TurismoProject/imagens/Danilo.jpg" 
+    </div>
+        <p> <strong> Danilo Abreu</strong> - Trabalhar com Desenvolvimento web é algo que sempre tive vontade. Porém, pelas circustâncias trilhei outro caminho, 
+          minha primeira formação foi em Biomedicina onde trabalhei por vários anos como Analista de Garantia e Qualidade. Entretanto sempre senti que
+          queria fazer algo que me fizesse mais feliz. Por isso, encarei o desafio de fazer uma transcição de carreira para Análise e Desenvolvimento de Sistemas.
+          Curso do qual tenho gostado bastante. Sempre fui muito criativo, proativo e determinado a desenvolver um bom trabalho onde estou atuando, com "Dev" sinto que não vai ser diferente. </p>
+          <p> A <strong>Adventure Tour in Rio</strong> nasceu da paixão pela natureza e esportes radicais.
           Proporcionamos experiências únicas e seguras para quem deseja explorar trilhas, cachoeiras e montanhas.
-        </p>
+        </div></p>
         <p>Trabalhamos com guias especializados e roteiros ecológicos em locais pouco explorados.</p>
       </div>
     </div>
@@ -251,6 +346,18 @@
 
       <input type="submit" value="Enviar">
     </form>
+  <div class="endereco">
+    <h2>Adventure Tour in Rio</h2>
+    <h1> West Shopping </h1>      
+      <p>Estrada do Mendanha, 555, 3º piso</p>
+      <p>Campo Grande </p>
+      <p>Rio de Janeiro - RJ</p>
+      <p>CEP: 23087-284</p>
+    </div>
+    
+    <div class="mapa-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.7827185580772!2d-43.56018082518856!3d-22.884483579270803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9be3d20a0c057d%3A0x37af24e9e756f5cf!2sWest%20Shopping!5e0!3m2!1spt-BR!2sbr!4v1763497096588!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
   </section>
 
   <!-- Rodapé -->
@@ -267,11 +374,5 @@
   
   <script src="../TurismoProject/Modais/scripts.js"></script>
 </body>
-<?php
-session_start();
-if (!isset($_SESSION["usuario"])) {
-  header("Location: login.php");
-  exit;
-}
-?>
+
 </html>
