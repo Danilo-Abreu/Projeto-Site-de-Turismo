@@ -1,73 +1,72 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #6dea7585;
-    color: #333;
-    text-align: center;
-    border-radius: 10px;
-    border-style: groove;
-
+    font-family: Arial, sans-serif; /* Define a fonte padrão como Arial */
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove espaçamento interno padrão */
+    background-color: #6dea7585; /* Cor de fundo com transparência */
+    color: #333; /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
+    border-radius: 10px; /* Bordas arredondadas para o body */
+    border-style: groove; /* Estilo de borda em relevo */
 }
 
     header {
-        background-color: #09a43a;
-        color: white;
-        padding: 20px;
-        border-style: groove;
-        border-radius: 10px;
+        background-color: #09a43a; /* Fundo verde para o cabeçalho */
+        color: white; /* Texto branco */
+        padding: 20px; /* Espaçamento interno */
+        border-style: groove; /* Borda em relevo */
+        border-radius: 10px; /* Bordas arredondadas */
     }
 
     header img {
-        width: 120px;
-        height: auto;
+        width: 120px; /* Largura da imagem do cabeçalho */
+        height: auto; /* Altura proporcional */
     }
 
     nav ul {
-        list-style-type: disc;
-        padding: 0;
-        margin: 20px 0;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
+        list-style-type: disc; /* Marcadores em formato de disco */
+        padding: 0; /* Remove espaçamento interno */
+        margin: 20px 0; /* Espaçamento vertical */
+        display: flex; /* Exibe itens em linha */
+        justify-content: center; /* Centraliza itens */
+        gap: 20px; /* Espaço entre itens */
     }
 
     nav a {
-        text-decoration: darkgreen;
-        color: #bddfb9;
-        font-weight: bold;
+        text-decoration: darkgreen; /* Valor incorreto (deveria ser none ou underline) */
+        color: #bddfb9; /* Cor verde clara para links */
+        font-weight: bold; /* Texto em negrito */
     }
 .pedragavea-header {
-    background-color: #09a43a;
-    color: white;
-    padding: 20px;
-    border-style: groove;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    background-color: #09a43a; /* Fundo verde para cabeçalho específico */
+    color: white; /* Texto branco */
+    padding: 20px; /* Espaçamento interno */
+    border-style: groove; /* Borda em relevo */
+    border-radius: 10px; /* Bordas arredondadas */
+    margin-bottom: 20px; /* Espaço abaixo do cabeçalho */
 }
 
     nav a:hover {
-        text-decoration: underline;
+        text-decoration: underline; /* Sublinha ao passar o mouse */
     }
 
     section {
-        margin: 40px auto;
-        max-width: 600px;
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin: 40px auto; /* Espaçamento externo e centralização */
+        max-width: 600px; /* Largura máxima */
+        background-color: #fff; /* Fundo branco */
+        padding: 30px; /* Espaçamento interno */
+        border-radius: 10px; /* Bordas arredondadas */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra leve */
     }
 
     form {
-        text-align: left;
+        text-align: left; /* Alinha texto à esquerda */
     }
 
     label {
-        font-weight: bold;
+        font-weight: bold; /* Negrito nos rótulos */
     }
 
     input, textarea {
-        width: 100%;
-        padding: 8px;   
+        width: 100%; /* Ocupa toda largura */
+        padding: 8px;   /* Espaçamento interno */
     }
