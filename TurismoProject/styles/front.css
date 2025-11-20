@@ -496,51 +496,49 @@ body {
   opacity: 1; /* Visível */
   visibility: visible; /* Mostra overlay */
 }
-/*Botões fixos na tela (Voltar ao topo e WhatsApp)*/
+/* Fim da Barra de Rolagem */
 
+
+/*Botões fixos na tela (Voltar ao topo e WhatsApp)*/
 .fixed-button {
-    position: fixed; /* Fixa na tela */
-    display: none;   /* Oculto por padrão */
-    align-items: center; /* Centraliza conteúdo verticalmente */
-    justify-content: center; /* Centraliza conteúdo horizontalmente */
+    position: fixed; /* Fixa o botão na tela, mesmo ao rolar */
+    display: none;   /* Começa invisível */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
     width: 50px;     /* Largura do botão */
     height: 50px;    /* Altura do botão */
-    border-radius: 50%; /* Botão circular */
-    background-color: var(--color-white); /* Cor de fundo */
-    color: var(--color-black); /* Cor do ícone */
-    cursor: pointer; /* Cursor de clique */
-    z-index: 1000;   /* Sobrepõe conteúdo */
-    opacity: 0;      /* Invisível por padrão */
-    transition: opacity 0.5s ease, box-shadow 0.5s ease; /* Transição suave */
+    border-radius: 50%; /* Deixa o botão redondo */
+    cursor: pointer; /* Muda o cursor para "mãozinha" ao passar por cima */
+    z-index: 1000;   /* Garante que o botão fique acima de outros elementos */
+    opacity: 10;      /* Começa invisível (transparente) */
 }
 
 /*Botão "Voltar ao Topo"*/
-
 #backToTop {
-    bottom: 20px; /* Distância do fundo */
-    left: 20px;   /* Distância da esquerda */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Sombra */
-    background-color: white; /* Fundo branco */
+    bottom: 20px; /* Distância do fundo da tela */
+    left: 20px;   /* Distância da esquerda da tela */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Sombra escura ao redor do botão */
+    background-color: white; /* Cor de fundo branca */
 }
 
 /*Botão do WhatsApp*/
 #whatsappButton {
-    bottom: 20px; /* Distância do fundo */
-    right: 20px;  /* Distância da direita */
-    background-color: #25D366; /* Verde do WhatsApp */
-    box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5); /* Sombra verde */
-    animation: pulse 2s infinite; /* Animação pulsante */
+    bottom: 20px; /* Distância do fundo da tela */
+    right: 20px;  /* Distância da direita da tela */
+    background-color: #25D366; /* Verde padrão do WhatsApp */
+    box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5); /* Sombra verde ao redor */
+    animation: pulse 2s infinite; /* Aplica animação de "pulsar" continuamente a cada 2 segundos */
 }
 
 /*Ícone dentro do botão do WhatsApp*/
 #whatsappButton i {
     font-size: 24px; /* Tamanho do ícone */
-    color: #fff;      /* Cor branca */
+    color: #fff;      /* Cor branca para o ícone */
 }
 
 /*Ícones dentro de qualquer botão fixo*/
 .fixed-button i {
-    font-size: 24px; /* Tamanho padrão dos ícones */
+    font-size: 24px; /* Tamanho padrão dos ícones nos botões */
 }
 
 /*Animação de Pulsar*/
@@ -550,14 +548,16 @@ body {
         box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Sombra inicial */
     }
     50% {
-        transform: scale(1.1); /* Aumenta tamanho */
+        transform: scale(1.1); /* Aumenta um pouco o tamanho */
         box-shadow: 0 0 20px rgba(0, 255, 0, 0.7); /* Sombra mais forte */
     }
     100% {
-        transform: scale(1); /* Volta ao normal */
-        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Sombra inicial */
+        transform: scale(1); /* Volta ao tamanho normal */
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Volta à sombra inicial */
     }
 }
+
+/* fim dos Botões Fixos */
 .contato-section {
     padding: 40px; /* Espaçamento interno */
     background: #f5f5f5; /* Fundo claro */

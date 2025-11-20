@@ -237,11 +237,6 @@ function moverCarrosselPorId(seta, direcao) {
 }
 document.addEventListener('DOMContentLoaded', function () { // Espera o HTML carregar para só então rodar o script
 
-    // Ajusta para garantir que o site comece no topo ao recarregar
-    if (window.location.hash !== '#inicio') {               // Verifica se a URL não tem o hash #inicio
-        window.location.hash = '#inicio';                   // Se não tiver, adiciona #inicio para "forçar" início no topo
-    }
-
     const backToTopButton = document.getElementById('backToTop');   // Pega o botão "Voltar ao topo" pelo ID
     const whatsappButton = document.getElementById('whatsappButton'); // Pega o botão do WhatsApp pelo ID
 
@@ -258,10 +253,6 @@ document.addEventListener('DOMContentLoaded', function () { // Espera o HTML car
         } else {                                           // Se estiver no topo (ou perto)
             backToTopButton.style.opacity = '0';           // Começa a esconder o botão de topo (fade out)
             whatsappButton.style.opacity = '0';            // Começa a esconder o botão do WhatsApp (fade out)
-            setTimeout(() => {                             // Aguarda a transição de opacidade terminar
-                backToTopButton.style.display = 'none';    // Some com o botão de topo da tela
-                whatsappButton.style.display = 'none';     // Some com o botão do WhatsApp da tela
-            }, 500);                                       // Tempo deve combinar com a duração de transition no CSS
         }
     }
 
@@ -275,44 +266,6 @@ document.addEventListener('DOMContentLoaded', function () { // Espera o HTML car
 
     // Ação ao clicar no botão do WhatsApp
     whatsappButton.addEventListener('click', function () {   // Quando clicar no botão do WhatsApp...
-        window.open('https://wa.me/5521990665379', '_blank') ;// Abre o chat do WhatsApp com esse número
+        window.open('https://wa.me/5521994681987', '_blank') ;// Abre o chat do WhatsApp com esse número
     });
 }); // Fim do DOMContentLoaded: garante que tudo só roda depois do HTML estar pronto
-const backToTopButton = document.getElementById('backToTop');
-const whatsappButton = document.getElementById('whatsappButton');
-
-if (backToTopButton) {
-  backToTopButton.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-if (whatsappButton) {
-  whatsappButton.addEventListener('click', () => {
-    window.open('https://wa.me/5521994681987', '_blank');
-  });
-}
-let galeriaImagens = [];
-let galeriaIndex = 0;
-
-function abrirGaleria(imagens) {
-    galeriaImagens = imagens;
-    galeriaIndex = 0;
-
-    document.getElementById("galeria-img").src = galeriaImagens[galeriaIndex];
-    document.getElementById("galeria-modal").style.display = "flex";
-}
-
-function fecharGaleria() {
-    document.getElementById("galeria-modal").style.display = "none";
-}
-
-function galeriaProxima() {
-    galeriaIndex = (galeriaIndex + 1) % galeriaImagens.length;
-    document.getElementById("galeria-img").src = galeriaImagens[galeriaIndex];
-}
-
-function galeriaAnterior() {
-    galeriaIndex = (galeriaIndex - 1 + galeriaImagens.length) % galeriaImagens.length;
-    document.getElementById("galeria-img").src = galeriaImagens[galeriaIndex];
-}
