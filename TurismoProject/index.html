@@ -99,12 +99,10 @@
 
     <!-- Trilhas -->
   <div class="tab-content active" id="trilhas">  <!-- Conteúdo da aba trilhas -->
-  <div class="carrossel-container"> <!-- Container do carrossel -->
     <h3>Trilhas</h3> <!-- Subtítulo -->
     <p>Explore trilhas incríveis como a Pedra do Telégrafo, Pedra do Pontal e Pedra da Gávea — aventura, natureza e vistas de tirar o fôlego!</p> <!-- Texto -->
 
- <button class="seta seta-esquerda" data-trilhas-id="carrosselTrilhas" onclick="moverCarrosselPorId(this, -1)">&#10094;</button> <!-- Botão seta esquerda -->
- <button class="seta seta-direita" data-trilhas-id="carrosselTrilhas" onclick="moverCarrosselPorId(this, 1)">&#10095;</button> <!-- Botão seta direita -->
+
 
   <div class="trilhas" id="carrosselTrilhas"> <!-- Carrossel de trilhas -->
     <div class="item" ondblclick="abrirGaleria(['imagens/PedraGavea.jpg','imagens/Gavea2.jpg','imagens/Gavea3.jpg','imagens/Gavea4.jpg' ])"> <!-- Item com galeria -->
@@ -158,7 +156,7 @@
   
 <!-- ======== ABA CACHOEIRAS ======== -->
 <div class="tab-content" id="cachoeiras"> <!-- Conteúdo da aba cachoeiras -->
-  <div class="carrossel-container"> <!-- Container do carrossel cachoeiras -->
+
     <h3>Cachoeiras</h3> <!-- Título da aba -->
     <p>Refresque-se nas cachoeiras mais lindas do Rio!</p> <!-- Texto descritivo -->
 
@@ -200,15 +198,11 @@
       </div> <!-- Fecha item -->
 
   </div> <!-- Fecha carrossel cachoeiras -->
-      <button class="seta seta-esquerda" data-trilhas-id="carrosselCachoeiras" onclick="moverCarrosselPorId(this, -1)">&#10094;</button> <!-- Botão seta esquerda -->
-      <button class="seta seta-direita" data-trilhas-id="carrosselCachoeiras" onclick="moverCarrosselPorId(this, 1)">&#10095;</button> <!-- Botão seta direita -->
-    <div class="dots" id="dots-cachoeiras"></div> <!-- Indicadores do carrossel cachoeiras -->
-  </div> <!-- Fecha container -->
 </div> <!-- Fecha aba cachoeiras -->
 
 <!-- ======== ABA RAPEL ======== -->
 <div class="tab-content" id="rapel"> <!-- Conteúdo da aba rapel -->
-  <div class="carrossel-container"> <!-- Container do carrossel rapel -->
+ 
     <h3>Rapel</h3> <!-- Título -->
     <p>Desça paredões incríveis com segurança e adrenalina!</p> <!-- Texto -->
 
@@ -284,8 +278,7 @@
       </div> <!-- Fim do item -->
 
     </div> <!-- Fim do carrossel radicais -->
-<button class="seta seta-esquerda" data-trilhas-id="carrosselRadicais" onclick="moverCarrosselPorId(this, -1)">&#10094;</button> <!-- Seta esquerda para navegar o carrossel -->
-<button class="seta seta-direita" data-trilhas-id="carrosselRadicais" onclick="moverCarrosselPorId(this, 1)">&#10095;</button> <!-- Seta direita para navegar o carrossel -->
+
     <div class="dots" id="dots-radicais"></div> <!-- Indicadores (bolinhas) do carrossel radicais -->
   </div> <!-- Fim do container do carrossel radicais -->
 </div> <!-- Fim da aba radicais -->
@@ -294,9 +287,6 @@
 
     <img id="galeria-img" class="galeria-imagem"> <!-- Imagem principal exibida no modal -->
 
-    <button class="galeria-btn esquerda" onclick="galeriaAnterior()">&#10094;</button> <!-- Botão para imagem anterior na galeria -->
-    <button class="galeria-btn direita" onclick="galeriaProxima()">&#10095;</button> <!-- Botão para próxima imagem na galeria -->
-</div> <!-- Fim do modal da galeria -->
   </section> <!-- Fim da seção de passeios -->
 
   <!-- Seção Sobre -->

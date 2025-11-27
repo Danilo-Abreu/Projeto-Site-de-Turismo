@@ -177,24 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ======= Funções =======
 
-// Cria os pontinhos
-function criarDots(carrossel) {
-  carrossel.dotsContainer.innerHTML = "";
 
-  carrossel.itens.forEach((_, i) => {
-    const dot = document.createElement("span");
-    dot.classList.add("dot");
-    if (i === 0) dot.classList.add("active");
-
-    dot.onclick = () => {
-      carrossel.posicao = i;
-      moverCarrossel(carrossel, 0);
-      atualizarDots(carrossel);
-    };
-
-    carrossel.dotsContainer.appendChild(dot);
-  });
-}
 
 // Move o carrossel na direção (+1 ou -1)
 function moverCarrossel(carrossel, direcao = 1) {
@@ -230,11 +213,7 @@ function pararCarrosselAuto(carrossel) {
   if (carrossel.intervalo) clearInterval(carrossel.intervalo);
 }
 
-// ======= Setas opcionais (caso tenha botões de seta no HTML) =======
-function moverCarrosselPorId(seta, direcao) {
-  const carrossel = carrosseis.find(c => c.trilhas.id === seta.dataset.trilhasId);
-  if (carrossel) moverCarrossel(carrossel, direcao);
-}
+
 document.addEventListener('DOMContentLoaded', function () { // Espera o HTML carregar para só então rodar o script
 
     const backToTopButton = document.getElementById('backToTop');   // Pega o botão "Voltar ao topo" pelo ID
