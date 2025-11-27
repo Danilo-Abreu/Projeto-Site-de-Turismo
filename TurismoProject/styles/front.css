@@ -1,622 +1,424 @@
-/* front.css */
+/* ===== CONFIGURAÇÕES GERAIS ===== */
 body {
-    font-family: Arial, sans-serif; /* Define a fonte principal */
-    font: optional; /* Propriedade não usual, pode ser removida */
-    font-size: 16px; /* Tamanho padrão do texto */
-    margin: 0; /* Remove margens padrão */
-    padding: 0; /* Remove espaçamento interno padrão */
-    background-color: #f5f5f5; /* Cor de fundo clara */
-    color: #333; /* Cor do texto */
-    text-align: center; /* Centraliza o texto */
-        }
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    text-align: center;
+}
 
-    header {
-        
-        background-image: url('../imagens/background.png'); /* Imagem de fundo do cabeçalho */
-        background-size: cover; /* Ajusta imagem para cobrir toda área */
-        background-position: center; /* Centraliza imagem */
-        color: rgb(247, 171, 100); /* Cor do texto no cabeçalho */
-        padding: 20px; /* Espaçamento interno */
-        
-    }
+/* ===== HEADER ===== */
+header {
+    background-image: url('../imagens/background.png');
+    background-size: cover;
+    background-position: center;
+    color: rgb(247, 171, 100);
+    padding: 20px;
+}
 
-    header img {
-        width: 80px; /* Largura da imagem do cabeçalho */
-        height: auto; /* Altura proporcional */
-        margin-bottom: 10px; /* Espaço abaixo da imagem */
-        display: block; /* Exibe como bloco */
-        margin-left:0 ; /* Margem esquerda zero */
-        margin-right: auto; /* Centraliza horizontalmente */
-    }
+header img {
+    width: 80px;
+    height: auto;
+}
 
-    nav ul {
-        list-style-type: none; /* Remove marcadores da lista */
-        padding: 0; /* Remove espaçamento interno */
-        margin: 20px 0; /* Espaçamento vertical */
-        display: flex; /* Exibe itens em linha */
-        justify-content: center; /* Centraliza itens */
-        gap: 20px; /* Espaço entre itens */
-    }
+/* ===== NAV ===== */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+nav a {
+    text-decoration: none;
+    color: #158d07;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: underline;
+}
 
-    nav a {
-        text-decoration: none; /* Remove sublinhado */
-        color: #158d07; /* Cor verde para links */
-        font-weight: bold; /* Texto em negrito */
-    }
+/* ===== SEÇÕES ===== */
+section {
+    margin: 40px auto;
+    max-width: 900px;
+    background-color: #a2eb627a;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
-    nav a:hover {
-        text-decoration: underline; /* Sublinha ao passar o mouse */
-    }
 
-    section {
-        margin: 40px auto; /* Espaçamento externo e centralização */
-        max-width: 600px; /* Largura máxima */
-        background-color: #a2eb627a; /* Fundo com transparência */
-        padding: 30px; /* Espaçamento interno */
-        border-radius: 10px; /* Bordas arredondadas */
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra leve */
-    }
+/* ===== FORMULÁRIO ===== */
+form { text-align: left; }
+label { font-weight: bold; }
+input, textarea {
+    width: 100%;
+    padding: 7px;
+    margin: 6px 0 16px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    background-color: #be6404;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+input[type="submit"]:hover {
+    background-color: #0079a1;
+}
 
-    form {
-        text-align: left; /* Alinha texto à esquerda */
-    }
-
-    label {
-        font-weight: bold; /* Negrito nos rótulos */
-    }
-
-    input, textarea {
-        width: 100%; /* Ocupa toda largura */
-        padding: 7px; /* Espaçamento interno */
-        margin: 6px 0 16px 0; /* Margens superior/inferior */
-        border: 1px solid #ccc; /* Borda cinza clara */
-        border-radius: 5px; /* Bordas arredondadas */
-        box-sizing: border-box; /* Inclui borda no cálculo da largura */
-    }
-
-    input[type="submit"] {
-        background-color: #be6404; /* Cor do botão enviar */
-        color: white; /* Texto branco */
-        border: none; /* Remove borda */
-        padding: 10px; /* Espaçamento interno */
-        cursor: pointer; /* Cursor de clique */
-        font-weight: bold; /* Texto em negrito */
-        border-radius: 5px; /* Bordas arredondadas */
-    }
-
-    input[type="submit"]:hover {
-        background-color: #0079a1; /* Cor ao passar o mouse */
-    }
+/* ===== BOTÃO ===== */
 .btn {
-  display: inline-block; /* Exibe como bloco em linha */
-  background-color: #007bff; /* Cor azul padrão */
-  color: white; /* Texto branco */
-  padding: 8px; /* Espaçamento interno */
-  border-radius: 9px; /* Bordas arredondadas */
-  text-decoration: none; /* Remove sublinhado */
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 8px;
+    border-radius: 9px;
+    text-decoration: none;
 }
+.btn:hover { background-color: #0056b3; }
 
-.btn:hover {
-  background-color: #0056b3; /* Azul mais escuro no hover */
-}
+/* ===== TABS ===== */
 .tabs {
-    display: flex; /* Exibe abas em linha */
-    justify-content: center; /* Centraliza abas */
-    gap: 10px; /* Espaço entre abas */
-    margin-bottom: 30px; /* Espaço abaixo */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
-
 .tab {
-    background-color: #008CBA; /* Cor azul */
-    color: white; /* Texto branco */
-    border: none; /* Remove borda */
-    padding: 10px 20px; /* Espaçamento interno */
-    cursor: pointer; /* Cursor de clique */
-    border-radius: 8px; /* Bordas arredondadas */
-    font-weight: bold; /* Texto em negrito */
-    transition: background-color 0.3s ease; /* Transição suave */
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
-
-.tab:hover {
-    background-color: #0079a1; /* Cor ao passar o mouse */
-}
-
-.tab.active {
-    background-color: #005f75; /* Cor da aba ativa */
-}
+.tab:hover { background-color: #0079a1; }
+.tab.active { background-color: #005f75; }
 
 .tab-content {
-    display: none; /* Oculta conteúdo por padrão */
-    text-align: center; /* Centraliza texto */
-    max-width: 700px; /* Largura máxima */
-    padding-right: auto; /* Ajuste não funcional */
-    margin: auto; /* Centraliza */
+    display: none;
+}
+.tab-content.active { display: block; }
+
+/* ===== GRID DE PASSEIOS ===== */
+.lista-passeios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
 }
 
-.tab-content.active {
-    display: block; /* Exibe conteúdo ativo */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease;
+    border: 1px solid #ccc;
+}
+.card:hover { transform: scale(1.05); }
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-.tab-content img {
-    width: 100%; /* Imagem ocupa toda largura */
-    border-radius: 10px; /* Bordas arredondadas */
-    margin-top: 15px; /* Espaço acima */
-}
-.sobre-container img {
-    width: 80px; /* Largura da imagem sobre */
-    height: auto; /* Altura proporcional */
-}
-.Danilo-container img{
-  width: 500px; /* Largura da imagem Danilo */
-  height: auto; /* Altura proporcional */
-}
-.btn:hover {
-    background-color: #005f75; /* Cor no hover */
-}
-/* ===== Carrossel ===== */
-.carrossel-container {
-  position: relative; /* Posição relativa para setas */
-  overflow: hidden; /* Oculta conteúdo extra */
-  width: 100%; /* Largura total */
-  max-width: 900px; /* Largura máxima */
-  margin: 0auto; /* Erro: deveria ser "0 auto" para centralizar */
-}
+.card h4 { margin: 10px 0; font-size: 20px; }
+.card .preco { color: #2e8b57; font-weight: bold; margin-bottom: 10px; }
 
-.trilhas {
-  display: flex; /* Exibe itens em linha */
-  justify-content: flex-start ; /* Alinha à esquerda */
-  transition: transform 0.6s ease-in-out; /* Animação suave */
-  gap: 20px; /* Espaço entre itens */
+.card button {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
 }
-.cachoeiras {
-  display: flex; /* Exibe itens em linha */
-  transition: transform 0.6s ease-in-out; /* Animação suave */
-  gap: 20px; /* Espaço entre itens */
-}
+.card button:hover { background-color: #cc5200; }
 
-.item {
-  background-color: #ffffff; /* Fundo branco */
-  border-radius: 15px; /* Bordas arredondadas */
-  width: 700px; /* Largura do item */
-  justify-content: flex-start; /* Alinha conteúdo à esquerda */
-  text-align: center; /* Centraliza texto */
-  padding: 15px; /* Espaçamento interno */
-  transition: transform 0.3s ease; /* Animação ao hover */
-  margin: 0%; /* Sem margem */
-  border: 1px solid #ccc; /* Borda cinza clara */
-
-}
-.item img{
-  width: 180px; /* Largura da imagem */
-  height: 120px; /* Altura da imagem */
-}
-.item img:hover {
-  transform: scale(1.05); /* Aumenta imagem no hover */
-  width: 310px; /* Nova largura */
-  height: 200px; /* Nova altura */
-}
-
-
-.item .preco {
-  color: #2e8b57; /* Verde para preço */
-  font-weight: bold; /* Negrito */
-}
-
-
-.item button:hover {
-  background-color: #cc5200; /* Cor do botão no hover */
-  padding: 10px; /* Espaçamento interno */
-}
-
-/* ===== Setas ===== */
-.seta {
-  position: absolute; /* Posição absoluta */
-  top: 50%; /* Centraliza verticalmente */
-  transform: translateY(-50%); /* Ajuste fino */
-  background-color: #31c02e; /* Cor verde */
-  color: rgb(255, 255, 255); /* Texto branco */
-  border: none; /* Remove borda */
-  font-size: 24px; /* Tamanho da seta */
-  padding: 8px 12px; /* Espaçamento interno */
-  cursor: pointer; /* Cursor de clique */
-  border-radius: 50%; /* Botão circular */
-  transition: background-color 0.3s ease; /* Transição suave */
-  z-index: 10; /* Sobrepõe outros elementos */
-}
-
-.seta:hover {
-  background-color: rgba(0, 0, 0, 0.8); /* Cor no hover */
-}
-
-.seta-esquerda { left: 10px; } /* Posição da seta esquerda */
-.seta-direita { right: 10px; } /* Posição da seta direita */
-
-/* ===== Pontinhos ===== */
-.dots {
-  text-align: center; /* Centraliza os pontos */
-  margin-top: 15px; /* Espaço acima */
-}
-
-.dot {
-  display: inline-block; /* Exibe em linha */
-  width: 10px; /* Largura do ponto */
-  height: 10px; /* Altura do ponto */
-  margin: 5px; /* Espaço entre pontos */
-  background-color: #bbb; /* Cor padrão */
-  border-radius: 50%; /* Forma circular */
-  transition: background-color 0.3s ease; /* Transição suave */
-  cursor: pointer; /* Cursor de clique */
-}
-
-.dot.active {
-  background-color: #007bff; /* Cor do ponto ativo */
-}
-/* ===== Modal ===== */
-.passeios {
-  display: none; /* Oculta modal por padrão */
-  position: fixed; /* Fixa na tela */
-  z-index: 10; /* Sobrepõe conteúdo */
-  left: 0; /* Alinha à esquerda */
-  top: 0; /* Alinha ao topo */
-  width: 100%; /* Largura total */
-  height: 100%; /* Altura total */
-  background: rgba(0,0,0,0.7); /* Fundo escuro */
-  justify-content: center; /* Centraliza conteúdo */
-  align-items: center; /* Centraliza verticalmente */
-}
-
-.carrosseltrilhas .carrosselcachoeiras {
-  background: white; /* Fundo branco */
-  padding: 20px; /* Espaçamento interno */
-  border-radius: 10px; /* Bordas arredondadas */
-  width: 300%; /* Largura exagerada (verificar) */
-  max-width: 600px; /* Largura máxima */
-  text-align: center; /* Centraliza texto */
-}
-
-.carrosseltrilhas .carrosselcachoeiras img {
-  width: 100%; /* Imagem ocupa toda largura */
-  border-radius: 10px; /* Bordas arredondadas */
-  margin-bottom: 15px; /* Espaço abaixo */
-}
-
-.close {
-  float: right; /* Alinha à direita */
-  font-size: 28px; /* Tamanho do X */
-  color: #333; /* Cor padrão */
-  cursor: pointer; /* Cursor de clique */
-}   
-.close:hover {
-  color: #000;  /* Cor no hover */
-}
-@keyframes fadeIn {
-  from {opacity: 0;} /* Início invisível */
-  to {opacity: 1;} /* Fim visível */
-}
-.trilhas-container {
-  display: flex; /* Exibe itens em linha */
-  flex-wrap: wrap; /* Quebra linha quando necessário */
-  justify-content: center; /* Centraliza itens */
-  gap: 20px; /* Espaço entre itens */
-  margin-top: 20px; /* Espaço superior para separar elementos */
-}
-
-
-.item:hover {
-  transform: scale(1.05); /* Aumenta levemente o item ao passar o mouse */
-}
-
-
-.item button {
-  background-color: #ff6600; /* Cor laranja para o botão */
-  color: white; /* Texto branco */
-  border: none; /* Remove borda padrão */
-  width: auto; /* Largura automática */
-  height: auto; /* Altura automática */
-  border-radius: 10px; /* Bordas arredondadas */
-  cursor: pointer; /* Cursor de clique */
-  font-display: auto; /* Propriedade não usual (não afeta visual) */
-  font-weight: bold; /* Texto em negrito */
-  transition: background-color 0.3s; /* Transição suave para cor */
-  padding: 5px; /* Espaçamento interno */
-}
-
-
-.ofertas {
-  text-align: center; /* Centraliza conteúdo */
-  margin: 40px auto; /* Espaçamento externo e centralização */
-}
+/* ===== SLIDER DE OFERTAS ===== */
+.ofertas { margin-top: 40px; }
 .slider {
-  position: relative; /* Necessário para posicionar elementos internos */
-  width: 80%; /* Largura do slider */
-  margin: auto; /* Centraliza horizontalmente */
-  overflow: hidden; /* Oculta conteúdo que ultrapassa limites */
-  border-radius: 15px; /* Bordas arredondadas */
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 15px;
 }
 .slide {
-  display: none; /* Oculta slides por padrão */
-  transition: opacity 1s ease-in-out; /* Transição suave de opacidade */
+    display: none;
+    transition: opacity 1s;
 }
-.slide.active {
-  display: block; /* Exibe slide ativo */
-  animation: fadeIn 1s; /* Animação de entrada */
-}
+.slide.active { display: block; }
 .slide img {
-  width: 100%; /* Imagem ocupa toda largura */
-  height: 300px; /* Altura fixa */
-  border-radius: 15px; /* Bordas arredondadas */
-  object-fit: cover; /* Ajusta imagem sem distorcer */
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
 }
 .slide p {
-  background-color: rgba(0,0,0,0.6); /* Fundo semitransparente */
-  color: #fff; /* Texto branco */
-  padding: 10px; /* Espaçamento interno */
-  margin: 0; /* Remove margens */
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    padding: 10px;
+    margin: 0;
 }
-/* Modal Carrinho */
+
+/* ===== MODAL DO PASSEIO ===== */
+.modal {
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+.modal-conteudo {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+.modal-conteudo img {
+    width: 100%;
+    border-radius: 10px;
+}
+.close {
+    float: right;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* ===== GALERIA ===== */
+.galeria-modal {
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+.galeria-imagem {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 15px;
+}
+.galeria-btn {
+    position: absolute;
+    top: 50%;
+    font-size: 45px;
+    background: rgba(255,255,255,0.3);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.galeria-btn.esquerda { left: 50px; }
+.galeria-btn.direita { right: 50px; }
+.fechar-galeria {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+/* ===== CARRINHO ===== */
 #icone-carrinho {
-  position: fixed; /* Fixa na tela */
-  top: 20px; /* Distância do topo */
-  right: 25px; /* Distância da direita */
-  background-color: #007bff; /* Cor azul */
-  color: white; /* Texto branco */
-  border-radius: 50px; /* Bordas arredondadas */
-  padding: 10px 15px; /* Espaçamento interno */
-  font-size: 22px; /* Tamanho do ícone/texto */
-  cursor: pointer; /* Cursor de clique */
-  z-index: 1001; /* Sobrepõe outros elementos */
-  display: flex; /* Exibe ícone e contador lado a lado */
-  align-items: center; /* Alinha verticalmente */
-  gap: 6px; /* Espaço entre ícone e contador */
-  box-shadow: 0 2px 10px rgba(0,0,0,0.25); /* Sombra */
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 1001;
 }
 
 #contador-carrinho {
-  background-color: #ff4d4d; /* Fundo vermelho */
-  color: white; /* Texto branco */
-  border-radius: 50%; /* Forma circular */
-  padding: 2px 8px; /* Espaçamento interno */
-  font-size: 14px; /* Tamanho do texto */
-  font-weight: bold; /* Negrito */
+    background-color: red;
+    padding: 3px 7px;
+    border-radius: 50%;
 }
 
-/* === PAINEL LATERAL DO CARRINHO === */
 #painel-carrinho {
-  position: fixed; /* Fixa na tela */
-  top: 0; /* Alinha ao topo */
-  right: -400px; /* Escondido por padrão */
-  width: 350px; /* Largura do painel */
-  height: 100%; /* Altura total */
-  background-color: #fff; /* Fundo branco */
-  box-shadow: -2px 0 10px rgba(0,0,0,0.2); /* Sombra lateral */
-  z-index: 1002; /* Sobrepõe outros elementos */
-  padding: 20px; /* Espaçamento interno */
-  display: flex; /* Layout flexível */
-  flex-direction: column; /* Coluna */
-  transition: right 0.4s ease; /* Animação para aparecer */
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 350px;
+    height: 100%;
+    background: white;
+    padding: 20px;
+    border-left: 1px solid #ccc;
+    transition: 0.3s;
+    z-index: 1002;
 }
+#painel-carrinho.ativo { right: 0; }
 
-#painel-carrinho.ativo {
-  right: 0; /* Mostra painel */
+#overlay {
+    position: fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.4);
+    display: none;
 }
-
-.cabecalho-carrinho {
-  display: flex; /* Layout flexível */
-  justify-content: space-between; /* Espaço entre título e botão */
-  align-items: center; /* Alinha verticalmente */
-}
-
-.cabecalho-carrinho h2 {
-  color: #3ec807; /* Cor verde para título */
-}
-
-#fechar-carrinho {
-  background: none; /* Remove fundo */
-  border: none; /* Remove borda */
-  font-size: 22px; /* Tamanho do X */
-  cursor: pointer; /* Cursor de clique */
-}
-
-#carrinho-itens {
-  flex-grow: 1; /* Ocupa espaço restante */
-  overflow-y: auto; /* Scroll vertical */
-  margin-top: 15px; /* Espaço acima */
-}
+#overlay.ativo { display: block; }
 
 .item-carrinho {
-  display: flex; /* Layout flexível */
-  justify-content: space-between; /* Espaço entre nome e botão */
-  align-items: center; /* Alinha verticalmente */
-  border-bottom: 1px solid #ddd; /* Linha separadora */
-  padding: 8px 0; /* Espaçamento interno */
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
 }
 
-.item-carrinho span {
-  font-size: 15px; /* Tamanho do texto */
-}
-
-.remover-item {
-  background-color: #ff4d4d; /* Fundo vermelho */
-  color: white; /* Texto branco */
-  border: none; /* Remove borda */
-  border-radius: 5px; /* Bordas arredondadas */
-  padding: 5px 10px; /* Espaçamento interno */
-  cursor: pointer; /* Cursor de clique */
-}
-
-#carrinho-total {
-  font-weight: bold; /* Negrito */
-  text-align: right; /* Alinha à direita */
-  margin-top: 10px; /* Espaço acima */
-  font-size: 16px; /* Tamanho do texto */
-}
-
-#limpar-carrinho {
-  background-color: #007bff; /* Fundo azul */
-  color: white; /* Texto branco */
-  border: none; /* Remove borda */
-  padding: 10px; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  cursor: pointer; /* Cursor de clique */
-  font-weight: bold; /* Negrito */
-  margin-top: 10px; /* Espaço acima */
-}
 .btn-comprar {
-    width: 100%; /* Ocupa toda largura */
-    padding: 15px; /* Espaçamento interno */
-    margin-top: 20px; /* Espaço acima */
-    background: #27ae60; /* Fundo verde */
-    border: none; /* Remove borda */
-    border-radius: 8px; /* Bordas arredondadas */
-    color: white; /* Texto branco */
-    font-size: 18px; /* Tamanho do texto */
-    cursor: pointer; /* Cursor de clique */
-    transition: 0.3s; /* Transição suave */
+    margin-top: 20px;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background: #2ecc71;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
 }
+.btn-comprar:hover { background: #27ae60; }
 
-.btn-comprar:hover {
-    background: #1e8d4d; /* Cor mais escura no hover */
-}
-
-/* === FUNDO ESCURECIDO === */
-#overlay {
-  position: fixed; /* Fixa na tela */
-  top: 0; /* Alinha ao topo */
-  left: 0; /* Alinha à esquerda */
-  width: 100%; /* Largura total */
-  height: 100%; /* Altura total */
-  background: rgba(0,0,0,0.4); /* Fundo semitransparente */
-  z-index: 1000; /* Sobrepõe conteúdo */
-  opacity: 0; /* Invisível por padrão */
-  visibility: hidden; /* Oculto por padrão */
-  transition: opacity 0.4s ease; /* Transição suave */
-}
-
-#overlay.ativo {
-  opacity: 1; /* Visível */
-  visibility: visible; /* Mostra overlay */
-}
-/* Fim da Barra de Rolagem */
-
-
-/*Botões fixos na tela (Voltar ao topo e WhatsApp)*/
+/* ===== BOTÕES FIXOS ===== */
 .fixed-button {
-    position: fixed; /* Fixa o botão na tela, mesmo ao rolar */
-    display: none;   /* Começa invisível */
-    align-items: center; /* Centraliza o conteúdo verticalmente */
-    justify-content: center; /* Centraliza o conteúdo horizontalmente */
-    width: 50px;     /* Largura do botão */
-    height: 50px;    /* Altura do botão */
-    border-radius: 50%; /* Deixa o botão redondo */
-    cursor: pointer; /* Muda o cursor para "mãozinha" ao passar por cima */
-    z-index: 1000;   /* Garante que o botão fique acima de outros elementos */
-    opacity: 10;      /* Começa invisível (transparente) */
+    position: fixed;
+    bottom: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 1500;
+    transition: 0.3s;
 }
-
-/*Botão "Voltar ao Topo"*/
 #backToTop {
-    bottom: 20px; /* Distância do fundo da tela */
-    left: 20px;   /* Distância da esquerda da tela */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Sombra escura ao redor do botão */
-    background-color: white; /* Cor de fundo branca */
+    left: 20px;
+    background: white;
+    box-shadow: 0 0 10px #00000066;
 }
-
-/*Botão do WhatsApp*/
 #whatsappButton {
-    bottom: 20px; /* Distância do fundo da tela */
-    right: 20px;  /* Distância da direita da tela */
-    background-color: #25D366; /* Verde padrão do WhatsApp */
-    box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5); /* Sombra verde ao redor */
-    animation: pulse 2s infinite; /* Aplica animação de "pulsar" continuamente a cada 2 segundos */
+    right: 20px;
+    background: #25D366;
+    color: white;
+    box-shadow: 0 0 10px green;
 }
 
-/*Ícone dentro do botão do WhatsApp*/
-#whatsappButton i {
-    font-size: 24px; /* Tamanho do ícone */
-    color: #fff;      /* Cor branca para o ícone */
-}
-
-/*Ícones dentro de qualquer botão fixo*/
-.fixed-button i {
-    font-size: 24px; /* Tamanho padrão dos ícones nos botões */
-}
-
-/*Animação de Pulsar*/
-@keyframes pulse {
-    0% {
-        transform: scale(1); /* Tamanho normal */
-        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Sombra inicial */
-    }
-    50% {
-        transform: scale(1.1); /* Aumenta um pouco o tamanho */
-        box-shadow: 0 0 20px rgba(0, 255, 0, 0.7); /* Sombra mais forte */
-    }
-    100% {
-        transform: scale(1); /* Volta ao tamanho normal */
-        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Volta à sombra inicial */
-    }
-}
-
-/* fim dos Botões Fixos */
-.contato-section {
-    padding: 40px; /* Espaçamento interno */
-    background: #f5f5f5; /* Fundo claro */
-}
-
-.contato-container {
-    display: flex; /* Layout flexível */
-    gap: 20px; /* Espaço entre elementos */
-    flex-wrap: wrap; /* Quebra linha quando necessário */
-}
-
+/* ===== MAPA ===== */
 .mapa-container {
-    flex: 1 1 400px; /* Ajuste flexível */
+    margin-top: 20px;
 }
-.galeria-modal {
-    display: none; /* Oculta modal */
-    position: fixed; /* Fixa na tela */
-    z-index: 2000; /* Sobrepõe conteúdo */
-    left: 0; /* Alinha à esquerda */
-    top: 0; /* Alinha ao topo */
-    width: 100%; /* Largura total */
-    height: 100%; /* Altura total */
-    background: rgba(0,0,0,0.8); /* Fundo escuro */
-    justify-content: center; /* Centraliza conteúdo */
-    align-items: center; /* Centraliza verticalmente */
+.sobre-container img {
+    width: 80px;
+    height: auto;
 }
-
-.galeria-imagem {
-    max-width: 85%; /* Largura máxima */
-    max-height: 85%; /* Altura máxima */
-    border-radius: 15px; /* Bordas arredondadas */
-    box-shadow: 0 0 15px #000; /* Sombra */
+.Danilo-container img{
+  width: 150px;
+  height: auto;
 }
-
-.fechar-galeria {
-    position: absolute; /* Posição absoluta */
-    top: 20px; /* Distância do topo */
-    right: 35px; /* Distância da direita */
-    color: #fff; /* Cor branca */
-    font-size: 40px; /* Tamanho do X */
-    cursor: pointer; /* Cursor de clique */
+/* ===== FOOTER ===== */
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    background: #222;
+    color: white;
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+#busca-global-container {
+    width: 90%;
+    margin: auto;
+    text-align: left;
 }
 
-.galeria-btn {
-    position: absolute; /* Posição absoluta */
-    top: 50%; /* Centraliza verticalmente */
-    background: rgba(255,255,255,0.3); /* Fundo semitransparente */
-    border: none; /* Remove borda */
-    font-size: 45px; /* Tamanho do ícone */
-    padding: 10px 20px; /* Espaçamento interno */
-    cursor: pointer; /* Cursor de clique */
-    border-radius: 10px; /* Bordas arredondadas */
-    transform: translateY(-50%); /* Ajuste fino */
-    color: #fff; /* Cor branca */
+/* Campo de busca */
+#busca-global {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 1px solid #888;
 }
 
-.galeria-btn:hover {
-    background: rgba(255,255,255,0.6); /* Fundo mais claro no hover */
+/* Resultados */
+#resultados-busca-global .card {
+    max-width: 320px;
+    margin: 20px auto;
 }
 
-.galeria-btn.esquerda { left: 30px; } /* Botão anterior */
-.galeria-btn.direita { right: 30px; } /* Botão próximo */
+/* Destaque da palavra encontrada */
+.marcado {
+    background: yellow;
+    font-weight: bold;
+}
+
+/* AUTOCOMPLETE */
+#autocomplete-list {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    background: white;
+    display: none;
+    position: absolute;
+    width: 90%;
+    z-index: 2000;
+}
+
+#autocomplete-list li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+#autocomplete-list li:hover {
+    background: #eeeeee;
+}
+
+#modalDetalhes .modal-conteudo {
+  max-width: 600px;
+  text-align: left;
+}
+
+.detalhe-img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}

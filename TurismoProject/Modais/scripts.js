@@ -1,250 +1,312 @@
+/* ========= SLIDER DE OFERTAS ========= */
 let indice = 0;
-function mostrarSlides() { 
-  const slides = document.querySelectorAll(".slide"); 
+
+function mostrarSlides() {
+  const slides = document.querySelectorAll(".slide");
   if (slides.length === 0) return;
-  slides.forEach(slide => slide.classList.remove("active")); 
-  indice = (indice + 1) % slides.length; 
-  slides[indice].classList.add("active"); 
+
+  slides.forEach(s => s.classList.remove("active"));
+  indice = (indice + 1) % slides.length;
+  slides[indice].classList.add("active");
 }
-setInterval(mostrarSlides, 4000); 
-// muda a cada 4 segundos
-// ======== CARRINHO DE COMPRAS ======== //
+
+setInterval(mostrarSlides, 4000);
+
+/* ========= CARRINHO ========= */
 let carrinho = [];
 
-// Abrir/Fechar carrinho
 function toggleCarrinho() {
   document.getElementById("painel-carrinho").classList.toggle("ativo");
   document.getElementById("overlay").classList.toggle("ativo");
 }
 
-// Adicionar item ao carrinho
 function adicionarAoCarrinho(nome, preco) {
-  const itemExistente = carrinho.find(item => item.nome === nome);
-
-  if (itemExistente) {
-    itemExistente.quantidade += 1;
-  } else {
-    carrinho.push({ nome, preco, quantidade: 1 });
-  }
+  let item = carrinho.find(i => i.nome === nome);
+  if (item) item.quantidade++;
+  else carrinho.push({ nome, preco, quantidade: 1 });
 
   atualizarCarrinho();
   atualizarContador();
 }
 
-// Remover item específico
 function removerDoCarrinho(nome) {
-  const index = carrinho.findIndex(item => item.nome === nome);
-  if (index !== -1) {
-    carrinho.splice(index, 1);
-    atualizarCarrinho();
-    atualizarContador();
-  }
+  carrinho = carrinho.filter(i => i.nome !== nome);
+  atualizarCarrinho();
+  atualizarContador();
 }
 
-// Atualiza a lista do carrinho
 function atualizarCarrinho() {
-  const container = document.getElementById("carrinho-itens");
-  const totalElement = document.getElementById("carrinho-total");
+  const div = document.getElementById("carrinho-itens");
+  div.innerHTML = "";
 
-  container.innerHTML = "";
   let total = 0;
 
   carrinho.forEach(item => {
-    const precoItem = item.preco * item.quantidade;
-    total += precoItem;
+    total += item.preco * item.quantidade;
 
-    const itemHTML = document.createElement("div");
-    itemHTML.classList.add("item-carrinho");
-
-    itemHTML.innerHTML = `
-      <span>${item.nome} (x${item.quantidade}) - R$ ${precoItem.toFixed(2)}</span>
-      <button class="remover-item" onclick="removerDoCarrinho('${item.nome}')">X</button>
+    div.innerHTML += `
+      <div class="item-carrinho">
+        <span>${item.nome} (x${item.quantidade})</span>
+        <button onclick="removerDoCarrinho('${item.nome}')">X</button>
+      </div>
     `;
-
-    container.appendChild(itemHTML);
   });
 
-  totalElement.textContent = `Total: R$ ${total.toFixed(2)}`;
+  document.getElementById("carrinho-total").innerText =
+    "Total: R$ " + total.toFixed(2);
 }
 
-// Atualiza o número no ícone do carrinho
 function atualizarContador() {
-  const contador = document.getElementById("contador-carrinho");
-  let totalItens = 0;
-  carrinho.forEach(item => totalItens += item.quantidade);
-  contador.textContent = totalItens;
+  document.getElementById("contador-carrinho").innerText =
+    carrinho.reduce((acc, i) => acc + i.quantidade, 0);
 }
-const botaoComprar = document.getElementById("botao-comprar");
-if (botaoComprar) {
-  botaoComprar.addEventListener("click", () => {
-    if (carrinho.length === 0) {
-      alert("Seu carrinho está vazio!");
-      return;
+
+document.getElementById("botao-comprar").onclick = () => {
+  if (carrinho.length === 0) return alert("Carrinho vazio!");
+
+  alert("Compra realizada com sucesso!");
+  carrinho = [];
+  atualizarCarrinho();
+  atualizarContador();
+};
+
+document.getElementById("limpar-carrinho").onclick = () => {
+  carrinho = [];
+  atualizarCarrinho();
+  atualizarContador();
+};
+
+/* ========= TABS ========= */
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.tab).classList.add("active");
+  };
+});
+
+/* ========= BUSCA ========= */
+function buscarGlobal() {
+    const termo = document.getElementById("busca-global").value.trim().toLowerCase();
+    const resultados = document.getElementById("resultados-busca-global");
+    const autocomplete = document.getElementById("autocomplete-list");
+    resultados.innerHTML = "";
+    autocomplete.innerHTML = "";
+    autocomplete.style.display = "none";
+
+    const categoriasSelecionadas = Array.from(document.querySelectorAll(".filtro-cat:checked"))
+                                       .map(el => el.value);
+
+    const cards = document.querySelectorAll(".card");
+    let encontrados = 0;
+    let sugestões = [];
+
+    if (termo === "") {
+        return;
+    }
+cards.forEach(card => {
+
+        // Categoria do card (descoberta pela aba pai)
+        const categoria = card.closest(".tab-content").id;
+
+        // Se filtro ativo e categoria não bate → descartar
+        if (categoriasSelecionadas.length > 0 &&
+            !categoriasSelecionadas.includes(categoria)) return;
+
+        const titulo = (card.querySelector("h4")?.innerText || "").toLowerCase();
+        const preco = (card.querySelector(".preco")?.innerText || "").toLowerCase();
+        const texto = card.innerText.toLowerCase();
+        const alt = (card.querySelector("img")?.alt || "").toLowerCase();
+
+        const combinado = `${titulo} ${preco} ${texto} ${alt}`;
+
+        // AUTOCOMPLETE (sugestões)
+        if (titulo.includes(termo)) {
+            sugestões.push(titulo);
+        }
+
+        if (combinado.includes(termo)) {
+            encontrados++;
+
+            const clone = card.cloneNode(true);
+
+            // Destaque da palavra
+            function destacar(texto) {
+                const index = texto.toLowerCase().indexOf(termo);
+                if (index === -1) return texto;
+
+                return texto.substring(0, index) +
+                       `<span class="marcado">${texto.substring(index, index + termo.length)}</span>` +
+                       texto.substring(index + termo.length);
+            }
+
+            // Destacar título
+            const h4 = clone.querySelector("h4");
+            if (h4) h4.innerHTML = destacar(h4.innerText);
+
+            // Tornar o resultado clicável → abre o card original
+            clone.style.cursor = "pointer";
+            clone.onclick = () => {
+                document.querySelector(`button[data-tab="${categoria}"]`).click();
+                card.scrollIntoView({ behavior: "smooth", block: "center" });
+                card.style.outline = "3px solid yellow";
+                setTimeout(() => card.style.outline = "none", 1200);
+            };
+
+            resultados.appendChild(clone);
+        }
+    });
+
+    // Se nenhum resultado
+    if (encontrados === 0) {
+        resultados.innerHTML = `<p><b>Nenhum passeio encontrado para "${termo}".</b></p>`;
     }
 
-    alert("Compra finalizada! Em breve você receberá os detalhes no WhatsApp.");
-
-    carrinho = [];
-    atualizarCarrinho();
-    atualizarContador();
-  });
+    // Mostrar autocomplete
+    if (sugestões.length > 0) {
+        autocomplete.style.display = "block";
+        sugestões.slice(0, 10).forEach(sug => {
+            let li = document.createElement("li");
+            li.innerText = sug;
+            li.onclick = () => {
+                document.getElementById("busca-global").value = sug;
+                buscarGlobal();
+                autocomplete.style.display = "none";
+            };
+            autocomplete.appendChild(li);
+        });
+    }
 }
 
+/* ========= CLIQUE NO SLIDE ========= */
+function abrirOferta(id) {
+  const ofertas = [
+    {
+      img: "./imagens/joatinga.2.jpg",
+      titulo: "Rapel na Joatinga",
+      preco: 140,
+      descricao: "Oferta especial válida até domingo!"
+    },
+    {
+      img: "./imagens/asa3.jpg",
+      titulo: "Voo de Asa Delta",
+      preco: 450,
+      descricao: "Desconto especial imperdível!"
+    },
+    {
+      img: "./imagens/PedraGavea.jpg",
+      titulo: "Trilha Pedra Gávea",
+      preco: 100,
+      descricao: "Desconto especial imperdível!"
+    },
+    {
+      img: "./imagens/cachoeiras-de-guapimirim-5.jpg",
+      titulo: "Cachoeira Secreta",
+      preco: 90,
+      descricao: "Pacote promocional limitado!"
+    }
+  ];
 
-// Esvaziar carrinho
-const botaoLimpar = document.getElementById("limpar-carrinho");
-if (botaoLimpar) {
-  botaoLimpar.addEventListener("click", () => {
-    carrinho = [];
-    atualizarCarrinho();
-    atualizarContador();
-  });
+  let o = ofertas[id];
+
+  abrirModalPasseio(o.img, o.titulo, o.preco, o.descricao);
 }
-// ======== TROCA DE ABAS (TABS) ======== //
-document.addEventListener("DOMContentLoaded", () => { 
-  const tabs = document.querySelectorAll(".tab"); 
-  const contents = document.querySelectorAll(".tab-content"); 
-  tabs.forEach(tab => { 
-    tab.addEventListener("click", () => {
-      tabs.forEach(t => t.classList.remove("active")); 
-      contents.forEach(c => c.classList.remove("active")); 
-      tab.classList.add("active"); 
-      const target = document.getElementById(tab.dataset.tab);
-      if (target) target.classList.add("active"); 
-    }); 
-  }); 
-}); 
 
-// ======== MODAIS ======== 
-function abrirModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) modal.style.display = "flex";
+/* ========= MODAL UNIVERSAL ========= */
+function abrirModalPasseio(img, titulo, preco, descricao) {
+  document.getElementById("modal-img").src = img;
+  document.getElementById("modal-titulo").innerText = titulo;
+  document.getElementById("modal-descricao").innerText = descricao;
+  document.getElementById("modal-preco").innerText = "Preço: R$ " + preco;
+
+  document.getElementById("modal-btn-carrinho").onclick = () =>
+    adicionarAoCarrinho(titulo, preco);
+
+  document.getElementById("modalPasseio").style.display = "flex";
 }
 
 function fecharModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) modal.style.display = "none";
+  document.getElementById(id).style.display = "none";
 }
 
-// Fecha modal clicando fora do conteúdo
-window.onclick = function (event) {
-  if (event.target.classList.contains('modal')) {
-    event.target.style.display = "none";
+/* ========= GALERIA ========= */
+let galeriaImagens = [];
+let galeriaIndex = 0;
+
+function abrirGaleria(imagens) {
+  galeriaImagens = imagens;
+  galeriaIndex = 0;
+
+  document.getElementById("galeria-img").src = galeriaImagens[galeriaIndex];
+  document.getElementById("galeria-modal").style.display = "flex";
+  
+}
+
+function fecharGaleria() {
+  document.getElementById("galeria-modal").style.display = "none";
+}
+
+
+function galeriaProxima() {
+  galeriaIndex = (galeriaIndex + 1) % galeriaImagens.length;
+  document.getElementById("galeria-img").src = galeriaImagens[galeriaIndex];
+}
+
+function galeriaAnterior() {
+  galeriaIndex = (galeriaIndex - 1 + galeriaImagens.length) % galeriaImagens.length;
+  document.getElementById("galeria-img").src = galeriaImagens[galeriaIndex];
+}
+window.addEventListener("click", function(event) {
+  const modal = document.getElementById("galeria-modal");
+  if (event.target === modal) {
+    modal.style.display = "none";
   }
-};
-
-// ========= CARROSSEL AUTOMÁTICO E UNIVERSAL =========
-
-// Configurações gerais
-const tempoTroca = 4000; // tempo entre slides (4 segundos)
-let carrosseis = []; // lista para guardar todos os carrosseis
-
-// Função para iniciar todos os carrosseis da página
-document.addEventListener("DOMContentLoaded", () => {
-  const containers = document.querySelectorAll(".carrossel-container");
-
-  containers.forEach((container, index) => {
-    const trilhas = container.querySelector(".trilhas");
-    const itens = container.querySelectorAll(".item");
-    const dotsContainer = container.querySelector(".dots");
-
-    if (!trilhas || itens.length === 0) return;
-
-    // Cria os dados de controle do carrossel
-    const carrossel = {
-      container,
-      trilhas,
-      itens,
-      dotsContainer,
-      posicao: 0,
-      intervalo: null,
-    };
-
-    // Cria os pontinhos
-    criarDots(carrossel);
-
-    // Inicia movimento automático
-    iniciarCarrosselAuto(carrossel);
-
-    // Eventos de pausa e retomada
-    trilhas.addEventListener("mouseenter", () => pararCarrosselAuto(carrossel));
-    trilhas.addEventListener("mouseleave", () => iniciarCarrosselAuto(carrossel));
-
-    // Guarda o carrossel
-    carrosseis.push(carrossel);
-  });
 });
 
-// ======= Funções =======
 
+/* ========= BOTÕES FIXOS ========= */
+document.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    backToTop.style.display = "flex";
+    whatsappButton.style.display = "flex";
+  } else {
+    backToTop.style.display = "none";
+    whatsappButton.style.display = "none";
+  }
+});
 
+backToTop.onclick = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
-// Move o carrossel na direção (+1 ou -1)
-function moverCarrossel(carrossel, direcao = 1) {
-  const { trilhas, itens } = carrossel;
-  const larguraItem = itens[0].offsetWidth + 20;
-  const totalItens = itens.length;
-  const visiveis = Math.max(1, Math.floor(trilhas.offsetWidth / larguraItem));
+whatsappButton.onclick = () => {
+  window.open("https://wa.me/5521990665379", "_blank");
+};
+window.addEventListener("click", function(event) {
+  const modal = document.getElementById("modalPasseio");
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
+function abrirDetalhes(passeio) {
+  document.getElementById("detalhe-img").src = passeio.img;
+  document.getElementById("detalhe-titulo").innerText = passeio.titulo;
+  document.getElementById("detalhe-descricao").innerText = passeio.descricao;
+  document.getElementById("detalhe-duracao").innerText = passeio.duracao;
+  document.getElementById("detalhe-dificuldade").innerText = passeio.dificuldade;
+  document.getElementById("detalhe-preco").innerText = "R$ " + passeio.preco;
 
-  carrossel.posicao += direcao;
-  if (carrossel.posicao < 0) carrossel.posicao = totalItens - visiveis;
-  if (carrossel.posicao > totalItens - visiveis) carrossel.posicao = 0;
+  document.getElementById("detalhe-galeria").onclick = () =>
+    abrirGaleria(passeio.galeria);
 
-  trilhas.style.transform = `translateX(-${carrossel.posicao * larguraItem}px)`;
-  atualizarDots(carrossel);
+  document.getElementById("detalhe-carrinho").onclick = () =>
+    adicionarAoCarrinho(passeio.titulo, passeio.preco);
+
+  document.getElementById("modalDetalhes").style.display = "flex";
 }
 
-// Atualiza os pontinhos
-function atualizarDots(carrossel) {
-  const dots = carrossel.dotsContainer.querySelectorAll(".dot");
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === carrossel.posicao);
-  });
+function fecharModalDetalhes() {
+  document.getElementById("modalDetalhes").style.display = "none";
 }
-
-// Carrossel automático
-function iniciarCarrosselAuto(carrossel) {
-  pararCarrosselAuto(carrossel); // evita duplicação
-  carrossel.intervalo = setInterval(() => moverCarrossel(carrossel, 1), tempoTroca);
-}
-
-// Pausa automática
-function pararCarrosselAuto(carrossel) {
-  if (carrossel.intervalo) clearInterval(carrossel.intervalo);
-}
-
-
-document.addEventListener('DOMContentLoaded', function () { // Espera o HTML carregar para só então rodar o script
-
-    const backToTopButton = document.getElementById('backToTop');   // Pega o botão "Voltar ao topo" pelo ID
-    const whatsappButton = document.getElementById('whatsappButton'); // Pega o botão do WhatsApp pelo ID
-
-    // Função para exibir ou esconder os botões ao rolar a página
-    function toggleButtons() {                             // Define a função que controla a visibilidade dos botões
-        const scrollPosition = window.scrollY;             // Pega a quantidade de rolagem vertical da página
-        if (scrollPosition > 100) {                        // Se rolou mais de 100px...
-            backToTopButton.style.display = 'flex';        // Mostra o botão "Voltar ao topo" (display flex)
-            whatsappButton.style.display = 'flex';         // Mostra o botão do WhatsApp (display flex)
-            setTimeout(() => {                             // Pequeno atraso para permitir transição de opacidade
-                backToTopButton.style.opacity = '1';       // Faz o botão de topo aparecer (fade in)
-                whatsappButton.style.opacity = '1';        // Faz o botão do WhatsApp aparecer (fade in)
-            }, 10);
-        } else {                                           // Se estiver no topo (ou perto)
-            backToTopButton.style.opacity = '0';           // Começa a esconder o botão de topo (fade out)
-            whatsappButton.style.opacity = '0';            // Começa a esconder o botão do WhatsApp (fade out)
-        }
-    }
-
-    // Adiciona o evento de scroll para exibir ou esconder os botões
-    document.addEventListener('scroll', toggleButtons);    // Executa toggleButtons sempre que a página rolar
-
-    // Ação ao clicar no botão "Voltar ao Topo"
-    backToTopButton.addEventListener('click', function () {  // Quando clicar no botão de topo...
-        window.scrollTo({ top: 0, behavior: 'smooth' });     // Rola suavemente até o topo da página
-    });
-
-    // Ação ao clicar no botão do WhatsApp
-    whatsappButton.addEventListener('click', function () {   // Quando clicar no botão do WhatsApp...
-        window.open('https://wa.me/5521994681987', '_blank') ;// Abre o chat do WhatsApp com esse número
-    });
-}); // Fim do DOMContentLoaded: garante que tudo só roda depois do HTML estar pronto
