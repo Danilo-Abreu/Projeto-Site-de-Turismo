@@ -11,7 +11,7 @@ JAVASCRIPT
 Equipe
 Danilo Abreu
 Pedro Henrique
-Pedro
+Pedro Luiz
 
 Estrutura do Projeto
 index.html → Página inicial
